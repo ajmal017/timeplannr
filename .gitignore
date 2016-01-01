@@ -18,6 +18,8 @@ vendor/
 /htdocs/content/uploads/
 /htdocs/content/upgrade/
 
+### Themosis
+/storage
 
 ### Environment Credentials
 .env.*.php
