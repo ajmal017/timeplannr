@@ -6,7 +6,7 @@
 					×
 				</button>
 				<h4 class="modal-title">
-					<span id="logo"> <img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/logo.png" alt="SmartAdmin"> </span>
+					<span id="logo"> <img src="/content/themes/timeplannr/resources/assets/test/img/logo.png" alt="SmartAdmin"> </span>
 				</h4>
 			</div>
 			<div class="modal-body">

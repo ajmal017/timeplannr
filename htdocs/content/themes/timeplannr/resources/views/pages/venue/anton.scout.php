@@ -434,28 +434,28 @@ Use search to find needed section.
 									<div class="chat-list-body custom-scroll">
 										<ul id="chat-users">
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/5.png" alt="">Robin Berry <span class="badge badge-inverse">23</span><span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/5.png" alt="">Robin Berry <span class="badge badge-inverse">23</span><span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Mark Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Mark Zeukartech <span class="state"><i class="last-online pull-right">2hrs</i></span></a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Belmain Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Belmain Dolson <span class="state"><i class="last-online pull-right">45m</i></span></a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Galvitch Drewbery <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Galvitch Drewbery <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Sadi Orlaf <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Sadi Orlaf <span class="state"><i class="fa fa-circle txt-color-green pull-right"></i></span></a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Markus <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Markus <span class="state"><i class="last-online pull-right">2m</i></span> </a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/sunny.png" alt="">Sunny <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/sunny.png" alt="">Sunny <span class="state"><i class="last-online pull-right">2m</i></span> </a>
 											</li>
 											<li>
-												<a href="javascript:void(0);"><img src="http://timeplannr.amber/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Denmark <span class="state"><i class="last-online pull-right">2m</i></span> </a>
+												<a href="javascript:void(0);"><img src="/content/themes/timeplannr/resources/assets/test/img/avatars/male.png" alt="">Denmark <span class="state"><i class="last-online pull-right">2m</i></span> </a>
 											</li>
 										</ul>
 									</div>
