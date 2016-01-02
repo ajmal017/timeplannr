@@ -75,6 +75,8 @@ class VenueController extends BaseController
 		// Booked slots for the venue
 		$bookedSlots = TimeslotModel::perVenue( array_keys($venuesArray) );
 
+		$hours = Config::get('application.timeslots');
+
 		$dates = array(
 			'monday' => date("Y-m-d", strtotime('next monday', strtotime('previous sunday'))),
 			'tuesday' => date("Y-m-d", strtotime('next tuesday', strtotime('previous sunday'))),
