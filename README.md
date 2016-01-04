@@ -16,18 +16,18 @@ A few third-party components are used in Timeplannr
 Installation
 ------------
 
-Install Timeplannr
+Follow the steps below to install Timeplannr in your own environment:
 
-1. git clone https://github.com/xeiter/timeplannr.git .
-2. composer install
-3. run "hostname" command and note the value of the hostname
-4. insert the hostname  into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
+- git clone https://github.com/xeiter/timeplannr.git .
+- composer install
+- run "hostname" command and note the value of the hostname
+- insert the hostname  into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
 ```
 return [
     'your-environment-name'    => 'zaroutski.com'
 ];
 ```
-5. Create a "/.env.<your-environment-name>" file and place your settings into it:
+- Create a "/.env.<your-environment-name>" file and place your settings into it:
 ```
 <?php
 
@@ -43,17 +43,15 @@ return [
     'WP_SITEURL'    => 'http://domain.com/cms'
 ];
 ```
-6. Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
-7. Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
-
-8. Activate your theme in WordPress admin
-9. Delete the default Themosis theme (if exists)
-10. In /vendor/tareq1988/wp-eloquent/src rename the following:
+- Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
+- Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
+- Activate your theme in WordPress admin
+- Delete the default Themosis theme (if exists)
+- In /vendor/tareq1988/wp-eloquent/src rename the following:
     - "eloquent" to "Eloquent"
     - "wp" to "WP"
-11. Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
+- Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
   
-
 Contributing
 ------------
 Any help is appreciated. The project is open-source and we encourage you to participate. You can contribute to the project in multiple ways by:
