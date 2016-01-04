@@ -27,7 +27,7 @@ return [
     'your-environment-name'    => 'zaroutski.com'
 ];
 ```
-- Create a "/.env.<your-environment-name>" file and place your settings into it:
+- Create a "/.env.your-environment-name" file and place your settings into it:
 ```
 <?php
 
