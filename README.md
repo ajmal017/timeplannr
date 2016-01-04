@@ -34,20 +34,19 @@ return [
 
 5) Create a "/.env.<your-environment-name>" file and place your settings into it:
 
-<?php
-
-/*----------------------------------------------------*/
-// Local environment vars
-/*----------------------------------------------------*/
-return [
-    'DB_NAME'       => 'timeplannr',
-    'DB_USER'       => 'your-database-username',
-    'DB_PASSWORD'   => 'your-database-password',
-    'DB_HOST'       => 'hostname',
-    'WP_HOME'       => 'http://domain.com',
-    'WP_SITEURL'    => 'http://domain.com/cms'
-
-];
+    <?php
+    
+    /*----------------------------------------------------*/
+    // Local environment vars
+    /*----------------------------------------------------*/
+    return [
+        'DB_NAME'       => 'timeplannr',
+        'DB_USER'       => 'your-database-username',
+        'DB_PASSWORD'   => 'your-database-password',
+        'DB_HOST'       => 'hostname',
+        'WP_HOME'       => 'http://domain.com',
+        'WP_SITEURL'    => 'http://domain.com/cms'
+    ];
 
 6a) Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
 6b) Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
