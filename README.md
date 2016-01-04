@@ -21,28 +21,28 @@ Install Timeplannr
 1. git clone https://github.com/xeiter/timeplannr.git .
 2. composer install
 3. run "hostname" command and note the value of the hostname
-4. insert the hostname from 3) into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
-
-    return [
-        'your-environment-name'    => 'zaroutski.com'
-    ];
-
+4. insert the hostname  into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
+```
+return [
+    'your-environment-name'    => 'zaroutski.com'
+];
+```
 5. Create a "/.env.<your-environment-name>" file and place your settings into it:
+```
+<?php
 
-    <?php
-    
-    /*----------------------------------------------------*/
-    // Local environment vars
-    /*----------------------------------------------------*/
-    return [
-        'DB_NAME'       => 'timeplannr',
-        'DB_USER'       => 'your-database-username',
-        'DB_PASSWORD'   => 'your-database-password',
-        'DB_HOST'       => 'hostname',
-        'WP_HOME'       => 'http://domain.com',
-        'WP_SITEURL'    => 'http://domain.com/cms'
-    ];
-
+/*----------------------------------------------------*/
+// Local environment vars
+/*----------------------------------------------------*/
+return [
+    'DB_NAME'       => 'timeplannr',
+    'DB_USER'       => 'your-database-username',
+    'DB_PASSWORD'   => 'your-database-password',
+    'DB_HOST'       => 'hostname',
+    'WP_HOME'       => 'http://domain.com',
+    'WP_SITEURL'    => 'http://domain.com/cms'
+];
+```
 6. Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
 7. Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
 
