@@ -30,10 +30,15 @@
 
 		$(document).ready(function() {
 
+			var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+			var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
 			var date = new Date();
 			var d = date.getDate();
 			var m = date.getMonth();
+			var m_text = months[ date.getMonth() ];
 			var y = date.getFullYear();
+			var week_day = days[ date.getDay() ];
 
 			var hdr = {
 				left: 'title',
@@ -240,6 +245,24 @@
 					// change the border color just for fun
 					jQuery(this).css('border-color', 'red');
 
+				},
+
+				eventAfterAllRender: function(a) {
+
+					var currentDate = $("#calendar").fullCalendar('getDate');
+					var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+					/*
+					var d = currentDate.getDate();
+					var m_text = months[ currentDate.getMonth() ];
+					var y = currentDate.getFullYear();
+					var week_day = days[ currentDate.getDay() ];
+					*/
+
+					var week_day = days[ currentDate.day() - 1 ];
+
+					currentDate = days[ currentDate.weekday() ] + " - " + currentDate.format('MMMM Do, YYYY') ;
+					$('.fc-toolbar .fc-left h2').text(currentDate);
 				}
 
 			});
