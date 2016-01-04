@@ -18,21 +18,16 @@ Installation
 
 Install Timeplannr
 
-1) git clone https://github.com/xeiter/timeplannr.git .
-2) composer install
-3) run "hostname" command and note the value of the hostname
-4) insert the hostname from 3) into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
+1. git clone https://github.com/xeiter/timeplannr.git .
+2. composer install
+3. run "hostname" command and note the value of the hostname
+4. insert the hostname from 3) into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
 
-/*----------------------------------------------------*/
-// Define your environments
-/*----------------------------------------------------*/
-return [
+    return [
+        'your-environment-name'    => 'zaroutski.com'
+    ];
 
-    'your-environment-name'    => 'zaroutski.com'
-
-];
-
-5) Create a "/.env.<your-environment-name>" file and place your settings into it:
+5. Create a "/.env.<your-environment-name>" file and place your settings into it:
 
     <?php
     
@@ -48,15 +43,15 @@ return [
         'WP_SITEURL'    => 'http://domain.com/cms'
     ];
 
-6a) Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
-6b) Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
+6a. Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
+6b. Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
 
-7) Activate your theme in WordPress admin
-8) Delete the default Themosis theme (if exists)
-9) In /vendor/tareq1988/wp-eloquent/src rename the following:
-    9a) "eloquent" to "Eloquent"
-    9b) "wp" to "WP"
-10) Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
+7. Activate your theme in WordPress admin
+8. Delete the default Themosis theme (if exists)
+9. In /vendor/tareq1988/wp-eloquent/src rename the following:
+    9a. "eloquent" to "Eloquent"
+    9b. "wp" to "WP"
+10. Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
   
 
 Contributing
