@@ -43,15 +43,15 @@ Install Timeplannr
         'WP_SITEURL'    => 'http://domain.com/cms'
     ];
 
-6a. Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
-6b. Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
+6. Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
+7. Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
 
-7. Activate your theme in WordPress admin
-8. Delete the default Themosis theme (if exists)
-9. In /vendor/tareq1988/wp-eloquent/src rename the following:
-    9a. "eloquent" to "Eloquent"
-    9b. "wp" to "WP"
-10. Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
+8. Activate your theme in WordPress admin
+9. Delete the default Themosis theme (if exists)
+10. In /vendor/tareq1988/wp-eloquent/src rename the following:
+    - "eloquent" to "Eloquent"
+    - "wp" to "WP"
+11. Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
   
 
 Contributing
