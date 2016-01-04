@@ -41,9 +41,6 @@
 										<label class="textarea">
 											{{ Form::textarea('title', '', array('class' => 'custom-scroll', 'rows' => 3)) }}
 										</label>
-										<div class="note">
-											<strong>Note:</strong> height of the textarea depends on the rows attribute.
-										</div>
 									</section>
 								</div>
 							</div>
