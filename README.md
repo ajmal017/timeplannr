@@ -1,13 +1,64 @@
-Themosis framework
-==================
+About Timeplannr
+================
 
-The Themosis framework is a tool aimed to WordPress developers of any levels. But the better WordPress and PHP knowledge you have the easier it is to work with.
+The Timeplannr app is an easy and visual way to communicate when friends about meeting up for any reason at any venue registered with Timeplannr. 
 
-Themosis framework is a tool to help you develop websites and web applications faster using [WordPress](https://wordpress.org). Using an elegant and simple code syntax, Themosis framework helps you structure and organize your code and allows you to better manage and scale your WordPress websites and applications.
+Pick the venue, tap on the timeslot and set how long you are going to stay at the select venue. Your booking will be visible to all the Timeplannr users. No need to sms everyone to organise the meet up.
 
-Development team
-----------------
-The framework was created by [Julien Lambé](http://www.themosis.com/), who continues to lead the development.
+Timeplannr is using WordPress as a content management system and Themosis as a web development framework.
+
+Third-party components
+----------------------
+A few third-party components are used in Timeplannr
+
+- **WP-Eloquent** - an Eloquent Wrapper for WordPress written by tareq1988 (https://github.com/tareq1988/wp-eloquent)
+
+Installation
+------------
+
+Install Timeplannr
+
+1) git clone https://github.com/xeiter/timeplannr.git .
+2) composer install
+3) run "hostname" command and note the value of the hostname
+4) insert the hostname from 3) into  the "/config/environment.php" (replace "your-environment-name" with your environment name)
+
+/*----------------------------------------------------*/
+// Define your environments
+/*----------------------------------------------------*/
+return [
+
+    'your-environment-name'    => 'zaroutski.com'
+
+];
+
+5) Create a "/.env.<your-environment-name>" file and place your settings into it:
+
+<?php
+
+/*----------------------------------------------------*/
+// Local environment vars
+/*----------------------------------------------------*/
+return [
+    'DB_NAME'       => 'timeplannr',
+    'DB_USER'       => 'your-database-username',
+    'DB_PASSWORD'   => 'your-database-password',
+    'DB_HOST'       => 'hostname',
+    'WP_HOME'       => 'http://domain.com',
+    'WP_SITEURL'    => 'http://domain.com/cms'
+
+];
+
+6a) Create a directory "<timeplannr-directory>/storage" and "<timeplannr-directory>/storage/views"
+6b) Make sure that "<timeplannr-directory>/storage/views" has write permissions so cache files can be written by the webserver
+
+7) Activate your theme in WordPress admin
+8) Delete the default Themosis theme (if exists)
+9) In /vendor/tareq1988/wp-eloquent/src rename the following:
+    9a) "eloquent" to "Eloquent"
+    9b) "wp" to "WP"
+10) Make sure permissions for "/htdocs/.htaccess" file are writable for the webserver  
+  
 
 Contributing
 ------------
@@ -20,8 +71,5 @@ Any help is appreciated. The project is open-source and we encourage you to part
 - Following us on Twitter
 - Sharing the project around your community
 
-For details about contributing to the framework, please check the [contribution guide](http://framework.themosis.com/docs/contributing/).
-
-License
--------
-The Themosis framework is open-source software licensed under [GPL-2+ license](http://www.gnu.org/licenses/gpl-2.0.html).
+Thank you,
+Anton
