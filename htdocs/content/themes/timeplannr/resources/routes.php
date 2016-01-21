@@ -10,7 +10,7 @@
  */
 
 
-Route::get('home', 'VenueController@find');
+Route::get('home', 'VenueController@plan');
 
 Route::get('page', array('anton', 'uses' => 'VenueController@anton'));
 
