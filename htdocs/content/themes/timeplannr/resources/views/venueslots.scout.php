@@ -109,7 +109,8 @@
 				editable: false,
 				aspectRatio: 1,
 				scrollTime: '00:00',
-				height:500,
+				height: 500,
+				slotDuration: '00:30:00',
 				header: {
 					/*left: 'promptResource today prev,next',
 					center: 'title',
@@ -150,11 +151,17 @@
 						$date = strtotime( $slot['date'] );
 						$day = date( "d", $date );
 
+						// Calculate time values for From
 						$time_from = $slot['time_from'];
+						$minute_from = $time_from > floor($time_from) ? 30 : 0 ;
 						$time_from_hour = $time_from;
+						$time_from_minute = $minute_from;
 
+						// Calculate time values for To
 						$time_to = $slot['time_to'];
+						$minute_to = $time_to > floor($time_to) ? 30 : 0 ;
 						$time_to_hour = $time_to;
+						$time_to_minute = $minute_to;
 
 						$title = isset( $slot['title'] ) ? $slot['title'] : NULL;
 						$colours = array(
@@ -173,13 +180,13 @@
 
 					{
 						title: '<?php echo addslashes(get_avatar(  $slot['timeslot_user'], 20 )); ?> {{ $slot['first_name'] }} {{ $slot['last_name']  }}',
-						start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', 0),
-						end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', 0),
+						start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', '{{ $time_from_minute }}'),
+						end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', '{{ $time_to_minute }}'),
 						allDay: false,
 						className: ["event", "bg-color-{{ $colour }}", 'event-id-<?php echo $slot['ID']; ?>'],
 						description: '{{ $title }}',
 						slotWidth: 50,
-						resourceId: 'venue-{{ $slot['timeslot_venue'] }}',
+						resourceId: 'venue-{{ $slot['timeslot_venue'] }}'
 					},
 
 						<?php $count ++; ?>
@@ -211,10 +218,15 @@
 					// jQuery("#eventLink").attr('href', event.url);
 					// jQuery("#eventContent").dialog({ modal: true, title: event.title });
 
+
 					jQuery("#launch-modal").trigger("click");
 
 					var text_date = date.format("YYYY-MM-DD");
 					var hour = parseInt(date.format("H"));
+					var minute = date.format("m");
+
+					// Add a half an hour block to the time slider if required
+					minute_number = minute == 30 ? 0.5 : 0;
 
 					jQuery("#date").val(text_date);
 					jQuery("#venue-id").val(resourceObj.id.replace("venue-", ""));
@@ -223,8 +235,10 @@
 
 					var mySlider = jQuery("#time-range");
 
-					mySlider.slider('option', 'values', [hour, hour+3]);
+					// Prefill the time slider with select value that ends and +3 hours
+					mySlider.slider('option', 'values', [hour + minute_number , hour + 3 + minute_number]);
 
+					/*
 					var myEvent = {
 						resource:"venue-75",
 						title:"my new event",
@@ -233,6 +247,7 @@
 						end: new Date()
 					};
 					myCalendar.fullCalendar( 'renderEvent', myEvent );
+					*/
 
 				},
 

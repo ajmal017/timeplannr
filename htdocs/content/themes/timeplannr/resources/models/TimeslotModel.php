@@ -141,7 +141,7 @@ class TimeslotModel {
 	{
 		$post = new Post;
 
-		$post->post_title = $data['title'];
+		$post->post_title = $data['comments'];
 		$post->post_type = $this->slug;
 		$post->post_status = 'publish';
 		$post->post_author = $userId;
@@ -154,7 +154,7 @@ class TimeslotModel {
 			'time_from' => $data['time_from'],
 			'time_to' => $data['time_to'],
 			'time_to' => $data['time_to'],
-			'title' => $data['title']
+			'title' => $data['comments']
 		);
 
 		$post->save();

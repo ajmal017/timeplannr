@@ -39,7 +39,7 @@
 								<div class="col col-9">
 									<section>
 										<label class="textarea">
-											{{ Form::textarea('title', '', array('class' => 'custom-scroll', 'rows' => 3)) }}
+											{{ Form::textarea('comments', '', array('class' => 'custom-scroll', 'rows' => 3)) }}
 										</label>
 									</section>
 								</div>
@@ -72,6 +72,7 @@
 
 	jQuery(document).ready(function() {
 
+		// Set up the slider for From and To times of the slot booking
 		var mySlider = jQuery("#time-range").slider({
 			min: 11,
 			max: 22,
@@ -79,6 +80,7 @@
 			values: [11, 22],
 			tooltip: 'show',
 			tooltip_position: 'top',
+			step: 0.5,
 			animate: true,
 
 			change: function( event,ui ){
@@ -89,16 +91,31 @@
 				var from_12h = '0';
 				var to_12h = '0';
 
-				if (ui.values[0] > 12) {
-					from_12h = (ui.values[0] - 12) + 'pm';
-				} else {
-					from_12h = (ui.values[0]) + 'am';
+				var from_value = ui.values[0];
+				var to_value = ui.values[1];
+
+				half_hour_from = "";
+				if (from_value > Math.floor(from_value)) {
+					half_hour_from = ":30";
+					from_value = Math.floor(from_value);
 				}
 
-				if (ui.values[1] > 12) {
-					to_12h = (ui.values[1] - 12) + 'pm';
+				half_hour_to = "";
+				if (to_value > Math.floor(to_value)) {
+					half_hour_to = ":30";
+					to_value = Math.floor(to_value);
+				}
+
+				if (from_value > 12) {
+					from_12h = (from_value - 12) + half_hour_from + 'pm';
 				} else {
-					to_12h = (ui.values[1]) + 'am';
+					from_12h = (from_value) + half_hour_from + 'am';
+				}
+
+				if (to_value > 12) {
+					to_12h = (to_value - 12) + half_hour_to + 'pm';
+				} else {
+					to_12h = (to_value) + half_hour_to + 'am';
 				}
 
 				jQuery( "#from" ).html( from_12h );
@@ -114,16 +131,31 @@
 				var from_12h = '0';
 				var to_12h = '0';
 
-				if (ui.values[0] > 12) {
-					from_12h = (ui.values[0] - 12) + 'pm';
-				} else {
-					from_12h = (ui.values[0]) + 'am';
+				var from_value = ui.values[0];
+				var to_value = ui.values[1];
+
+				half_hour_from = "";
+				if (from_value > Math.floor(from_value)) {
+					half_hour_from = ":30";
+					from_value = Math.floor(from_value);
 				}
 
-				if (ui.values[1] > 12) {
-					to_12h = (ui.values[1] - 12) + 'pm';
+				half_hour_to = "";
+				if (to_value > Math.floor(to_value)) {
+					half_hour_to = ":30";
+					to_value = Math.floor(to_value);
+				}
+
+				if (from_value > 12) {
+					from_12h = (from_value - 12) + half_hour_from + 'pm';
 				} else {
-					to_12h = (ui.values[1]) + 'am';
+					from_12h = (from_value) + half_hour_from + 'am';
+				}
+
+				if (to_value > 12) {
+					to_12h = (to_value - 12) + half_hour_to + 'pm';
+				} else {
+					to_12h = (to_value) + half_hour_to + 'am';
 				}
 
 				jQuery( "#from" ).html( from_12h );
@@ -137,6 +169,7 @@
 
 			var url = "/book"; // the script where you handle the form input.
 
+			// Save new event in database
 			jQuery.ajax({
 				type: "POST",
 				url: url,
@@ -153,24 +186,31 @@
 					var m = date.getMonth();
 					var y = date.getFullYear();
 
+					minutes_from = 0;
+					minutes_to = 0;
+					if ( myjson.time_from !== parseInt(myjson.time_from, 10) ) { minutes_from = 30; }
+					if ( myjson.time_to !== parseInt(myjson.time_to, 10) ) { minutes_to = 30; }
+
+					// Prepare options fo adding a new event to the calendar view
 					var new_event = {
 
 						title: '<?php echo addslashes(get_avatar( get_current_user_id(), 20 )); ?> <?php echo get_user_name(); ?>',
-						start: new Date(y, m, d , myjson.time_from, 0),
-						end: new Date(y, m, d, myjson.time_to, 0),
+						start: new Date(y, m, d , myjson.time_from, minutes_from),
+						end: new Date(y, m, d, myjson.time_to, minutes_to),
 						allDay: false,
 						className: ["event", "bg-color-red"],
-						description: 'sdfojsdofijosdijf osidjf osijdf oisj df',
+						// description: 'sdfojsdofijosdijf osidjf osijdf oisj df',
 						slotWidth: 50,
-						resourceId: 'venue-' + myjson.id,
+						resourceId: 'venue-' + myjson.id
 
 					};
 
+					// Dynamically add new event to the calendar view
 					myCalendar.fullCalendar( 'renderEvent', new_event );
 
 					$('#myModal').modal('hide');
 
-				},
+				}
 			});
 
 			e.preventDefault(); // avoid to execute the actual submit of the form.
