@@ -86,7 +86,7 @@
 <!-- HEADER -->
 <header id="header">
     <div id="logo-group">
-        <span id="logo"><img src="http://timeplannr.amber/content/uploads/2016/01/logo.png" alt="SmartAdmin"> </span>
+        <span id="logo"><img src="/content/uploads/2016/01/logo.png" alt="SmartAdmin"> </span>
     </div>
 
     <!-- pulled right: nav area -->
@@ -111,7 +111,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+                        <a href="<?php echo admin_url(); ?>profile.php" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
                     </li>
                     <li class="divider"></li>
                     <li>
