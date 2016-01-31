@@ -96,6 +96,11 @@ class VenueController extends BaseController
 		));
 	}
 
+	public function register()
+	{
+		return View::make('pages.venue.register', array());
+	}
+
 	public function anton()
 	{
 

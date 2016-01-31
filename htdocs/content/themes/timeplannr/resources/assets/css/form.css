@@ -2,3 +2,8 @@ body input#calendar-filter {
     font-size: 16px !important;
     padding: 4px 7px !important;
 }
+
+
+body .smart-form {
+    background-color: #fff !important;
+}
