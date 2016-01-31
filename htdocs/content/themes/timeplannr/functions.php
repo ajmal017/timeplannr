@@ -503,3 +503,12 @@ function create_user_from_registration( $cfdata ) {
 	return $cfdata;
 }
 add_action( 'wpcf7_before_send_mail', 'create_user_from_registration', 1 );
+
+/* redirect users to front page after login */
+function redirect_to_front_page() {
+	global $redirect_to;
+	if (!isset( $_GET['redirect_to']) ) {
+		$redirect_to = get_home_url();
+	}
+}
+add_action( 'login_form', 'redirect_to_front_page' );
