@@ -1,0 +1,17 @@
+/* Adjust size of avatar */
+@media(max-width:992px) {
+    .menu-on-top #mobile-profile-img a.userdropdown img {
+        width: 30px !important;
+        height: 30px !important;
+        margin-top: 4px;
+    }
+}
+
+@media(max-width:776px) {
+    .menu-on-top #mobile-profile-img a.userdropdown img {
+        width: 39px !important;
+        height: 39px !important;
+        margin-top: 0px;
+    }
+}
+/* END: Adjust size of avatar */

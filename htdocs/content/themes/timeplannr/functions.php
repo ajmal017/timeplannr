@@ -291,6 +291,7 @@ function theme_name_scripts() {
 	// wp_enqueue_script( 'bootstrap-slider', get_template_directory_uri() . '/resources/assets/js/smartadmin/plugin/bootstrap-slider/bootstrap-slider.min.js', NULL ,NULL, TRUE );
 	wp_enqueue_style( 'jquery-time-picker', get_template_directory_uri() . '/resources/assets/js/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css' );
 	wp_enqueue_style( 'form', get_template_directory_uri() . '/resources/assets/css/form.css' );
+	wp_enqueue_style( 'header', get_template_directory_uri() . '/resources/assets/css/header.css' );
 	/* END: jQuery timepicker styles */
 
 }
