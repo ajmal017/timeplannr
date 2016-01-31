@@ -160,10 +160,6 @@
 	        <li class="<?php get_page_by_path('book')->ID == get_the_ID() ? 'active' : ''; ?>">
 		        <a href="/book"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Book a slot</span></a>
 	        </li>
-            <li class="<?php get_page_by_path('book')->ID == get_the_ID() ? 'active' : ''; ?>">
-                <a href="/book"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Book a slot</span></a>
-            </li>
-
         </ul>
     </nav>
 			<span class="minifyme" data-action="minifyMenu">
