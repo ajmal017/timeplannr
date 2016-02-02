@@ -354,9 +354,21 @@ function get_events_callback() {
 
 		$time_from = $slot['time_from'];
 		$time_from_hour = $time_from;
+		$time_from_minute = '00';
+
+		if ($time_from > floor( $time_from ) ) {
+			$time_from_hour = floor( $time_from );
+			$time_from_minute = '30';
+		}
 
 		$time_to = $slot['time_to'];
 		$time_to_hour = $time_to;
+		$time_to_minute = '00';
+
+		if ($time_to > floor( $time_to ) ) {
+			$time_to_hour = floor( $time_to );
+			$time_to_minute = '30';
+		}
 
 		$title = isset( $slot['title'] ) ? $slot['title'] : NULL;
 		$colours = array(
@@ -378,8 +390,8 @@ function get_events_callback() {
 		// $slot_array['end'] = 'new Date(y, m, ' . $day . ', ' . $time_to_hour . ', 0)';
 		// $slot_array['start'] = '2015-11-22T10:30:00';
 
-		$slot_array['start'] = date( "Y-m-d", $date) . 'T' . $time_from . ':00:00';
-		$slot_array['end'] = date( "Y-m-d", $date) . 'T' . $time_to . ':00:00';
+		$slot_array['start'] = date( "Y-m-d", $date) . 'T' . $time_from_hour . ':' . $time_from_minute . ':00';
+		$slot_array['end'] = date( "Y-m-d", $date) . 'T' . $time_to_hour . ':' . $time_to_minute . ':00';
 		$slot_array['allDay'] = false;
 		$slot_array['className'] = array( 'event', 'bg-color-' . $colour);
 		$slot_array['description'] = $title;

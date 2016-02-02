@@ -49,7 +49,6 @@
 
 			jQuery("#calendar-filter").change(function() {
 
-
 				var data = {
 					'action': 'get_events',
 					'filter': jQuery(this).val()
@@ -69,7 +68,6 @@
 					}
 
 					for (i in responseObject.filtered_venues) {
-
 						myCalendar.fullCalendar('addResource', {
 							id: 'venue-' + responseObject.filtered_venues[i].ID,
 							name: responseObject.filtered_venues[i].post_title

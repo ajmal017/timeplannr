@@ -188,8 +188,8 @@
 
 					minutes_from = 0;
 					minutes_to = 0;
-					if ( myjson.time_from !== parseInt(myjson.time_from, 10) ) { minutes_from = 30; }
-					if ( myjson.time_to !== parseInt(myjson.time_to, 10) ) { minutes_to = 30; }
+					if ( parseFloat(myjson.time_from) !== parseInt(myjson.time_from, 10) ) { minutes_from = 30; }
+					if ( parseFloat(myjson.time_to) !== parseInt(myjson.time_to, 10) ) { minutes_to = 30; }
 
 					// Prepare options fo adding a new event to the calendar view
 					var new_event = {
