@@ -420,9 +420,13 @@ function get_user_name()
 	return $user['first_name'][0] . ' ' . $user['last_name'][0];
 }
 
-add_action( 'register_form', 'ac_extra_reg_fields', 1 );
+// Add first and last name fields to registration form
+add_action( 'register_form', 'az_add_first_last_name_fields_to_registration_form', 1 );
 
-function ac_extra_reg_fields() { ?>
+/**
+ * Add first and last name fields to registration field
+ */
+function az_add_first_last_name_fields_to_registration_form() { ?>
 
 	<p>
 		<label>First Name<br/>
@@ -439,71 +443,24 @@ function ac_extra_reg_fields() { ?>
 <?php }
 
 
+// Save first and last names on registration form
+add_action( 'user_register', 'az_save_fist_last_name' );
+
 /**
- * Create a new user submitted through a Contact Form 7 form
+ * Save first and last names on registration form
  *
- * @param Object $cfdata
- * @return mixed
+ * @param int $user_id
  */
-function create_user_from_registration( $cfdata ) {
+function az_save_fist_last_name( $user_id ) {
 
-	if ( !isset( $cfdata->posted_data ) && class_exists('WPCF7_Submission') ) {
-		// Contact Form 7 version 3.9 removed $cfdata->posted_data and now
-		// we have to retrieve it from an API
-		$submission = WPCF7_Submission::get_instance();
-		if ( $submission ) {
-			$formdata = $submission->get_posted_data();
-		}
-	} elseif ( isset( $cfdata->posted_data ) ) {
-		// For pre-3.9 versions of Contact Form 7
-		$formdata = $cfdata->posted_data;
-	} else {
-		// We can't retrieve the form data
-		return $cfdata;
-	}
-	// Check this is the user registration form
-	if ( $cfdata->title() == 'Registration form' ) {
-		$password = wp_generate_password( 12, false );
-		$email = $formdata['email'];
-		$name = $formdata['first-name'] . ' ' . $formdata['last-name'];
-		// Construct a username from the user's name
-		$username = strtolower( str_replace( ' ', '', $name ) );
-		$name_parts = explode(' ',$name);
-		if ( !email_exists( $email ) ) {
-			// Find an unused username
-			$username_tocheck = $username;
-			$i = 1;
-			while ( username_exists( $username_tocheck ) ) {
-				$username_tocheck = $username . $i++;
-			}
-			$username = $username_tocheck;
-			// Create the user
-			$userdata = array(
-				'user_login' => $username,
-				'user_pass' => $password,
-				'user_email' => $email,
-				'nickname' => reset($name_parts),
-				'display_name' => $name,
-				'first_name' => reset($name_parts),
-				'last_name' => end($name_parts),
-				'role' => 'subscriber'
-			);
-			$user_id = wp_insert_user( $userdata );
-			if ( !is_wp_error($user_id) ) {
-				// Email login details to user
-				$blogname = wp_specialchars_decode( get_option('blogname'), ENT_QUOTES) ;
-				$message = "Welcome! Your login details are as follows:" . "\r\n";
-				$message .= sprintf( __('Username: %s'), $username ) . "\r\n";
-				$message .= sprintf( __('Password: %s'), $password ) . "\r\n";
-				$message .= wp_login_url() . "\r\n";
-				wp_mail( $email, sprintf(__('[%s] Your username and password'), $blogname ), $message );
-			}
-		}
+	if ( ! empty( $_POST['first_name'] ) ) {
+		update_user_meta( $user_id, 'first_name', trim( $_POST['first_name'] ) );
 	}
 
-	return $cfdata;
+	if ( ! empty( $_POST['last_name'] ) ) {
+		update_user_meta( $user_id, 'last_name', trim( $_POST['last_name'] ) );
+	}
 }
-add_action( 'wpcf7_before_send_mail', 'create_user_from_registration', 1 );
 
 /* redirect users to front page after login */
 function redirect_to_front_page() {
