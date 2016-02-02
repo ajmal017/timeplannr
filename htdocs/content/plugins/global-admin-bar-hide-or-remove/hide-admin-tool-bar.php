@@ -1,31 +1,38 @@
 <?php 
 /*
-Plugin Name: Global Hide Toolbar
-Plugin URI: //wordpress.org/plugins/global-admin-bar-hide-or-remove/
-Description: Global Hide Front End Toolbar Manager According to Admin and User Roles (2014-04-16) This become obsolete if <strong>Core Team</strong> adds global options <a title="WordPress features are being developed plugins first" href="//make.wordpress.org/core/features-as-plugins/">features are being developed plugins first</a>
-Version: 1.6.1
-Author: <a title="Visit author homepage" href="//slangji.wordpress.com/">sLa NGjI's</a> & <a title="Visit plugin-master-author homepage" href="//www.fischercreativemedia.com/">D.J.Fischer</a>
+Plugin Name: Hide Admin Bar Toolbar
+Plugin URI: https://wordpress.org/plugins/global-admin-bar-hide-or-remove/
+Description: Hide WordPress 3.1+ Admin Bar or 3.3+ Toolbar frontend manager according to Administrators and Users Roles Profiles (2014-04-16) This become obsolete if <strong>Core Team</strong> adds global options <a href="https://make.wordpress.org/core/features-as-plugins/">features are being developed plugins first</a>. The configuration is Automatic and this plugin is No Logo!
+Author: sLaNGjI's Team
+Author URI: https://slangji.wordpress.com/plugins/
 Requires at least: 3.1
+Tested up to: 4.5
+Version: 1.6.1.1
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Network: true
-Text Domain: global-admin-bar-hide-or-remove
-Domain Path: /lang
-License: GPLv2 or later (license.txt)
-License URI: //www.gnu.org/licenses/gpl-2.0.html
-Indentation: GNU style coding standard
-Indentation URI: //www.gnu.org/prep/standards/standards.html
-Humans: We are the humans behind
-Humans URI: http://humanstxt.org/Standard.html
  *
- * LICENSING (license.txt)
+ * Approved 2011-2-24
+ * Build 2014-04-16
+ * Donate link https://slangji.wordpress.com/donate/
+ * Indentation GNU style coding standard
+ * Indentation URI https://www.gnu.org/prep/standards/standards.html
+ * Humans We are the humans behind
+ * Humans URI https://humanstxt.org/Standard.html
  *
- * [Global Hide Admin Tool Bar](//wordpress.org/plugins/global-admin-bar-hide-or-remove/)
+ * Plugin Owner  <a href="https://slangji.wordpress.com/plugins/">sLaNGjIs</a>
+ * Plugin Master <a href="https://www.fischercreativemedia.com/">D.J.Fischer</a> (prophecy2040)
  *
- * Global Hide Front and Back End Toolbar Manager According to Logged In Admin and User Roles
+ * LICENSING - license.txt
  *
- * Copyright (C) 2013-2014 [slangjis](//slangji.wordpress.com/) (email: <slangjis [at] googlegmail [dot] com>)
+ * [Global Hide Admin Tool Bar](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/)
+ *
+ * Global Hide Front End Admin Tool Bar Manager According to User Roles
+ *
+ * Copyright (C) 2013-2016 [sLaNGjIs](https://slangji.wordpress.com/) (email: <slangjis [at] googlegmail [dot] com>)
  *
  * This program is free software; you can redistribute it and/or
- * modify it under the terms of the [GNU General Public License](//wordpress.org/about/gpl/)
+ * modify it under the terms of the [GNU General Public License](https://wordpress.org/about/gpl/)
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
@@ -35,7 +42,7 @@ Humans URI: http://humanstxt.org/Standard.html
  * See the GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see [GNU General Public Licenses](//www.gnu.org/licenses/),
+ * along with this program; if not, see [GNU General Public Licenses](https://www.gnu.org/licenses/),
  * or write to the Free Software Foundation, Inc., 51 Franklin Street,
  * Fifth Floor, Boston, MA 02110-1301, USA.
  *
@@ -50,7 +57,8 @@ Humans URI: http://humanstxt.org/Standard.html
  * There is some legal grey area regarding what is considered a derivative work, but we feel
  * strongly that plugins and themes are derivative work and thus inherit the GPL license.
  *
- * The license for this software can be found on [Free Software Foundation](//www.gnu.org/licenses/gpl-2.0.html) and as license.txt into this plugin package.
+ * The license for this software can be found on [Free Software Foundation](https://www.gnu.org/licenses/gpl-2.0.html)
+ * and as license.txt into this plugin package.
  *
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
@@ -59,62 +67,63 @@ Humans URI: http://humanstxt.org/Standard.html
  * This global-hide-admin-tool-bar.php uses (or it parts) code derived from:
  *
  * global-admin-bar-hide-or-remove.php by Donald J. Fischer (email: <dfischer [at] fischercreativemedia [dot] com>)
- * Copyright (C) 2011-2013 [prophecy2040](//www.fischercreativemedia.com/) (email: <dfischer [at] fischercreativemedia [dot] com>)
+ * Copyright (C) 2011-2013 [prophecy2040](https://www.fischercreativemedia.com/) (email: <dfischer [at] fischercreativemedia [dot] com>)
  *
  * according to the terms of the GNU General Public License version 2 (or later) this uses or it parts code was derived.
  *
- * According to the Terms of the GNU General Public License version 2 (or later) part of Copyright belongs to your own author and part belongs to their respective others authors:
+ * According to the Terms of the GNU General Public License version 2 (or later) part of Copyright belongs to your own author
+ * and part belongs to their respective others authors:
  *
- * Copyright (C) 2008-2014 [slangjis](//slangji.wordpress.com/) (email: <slangjis [at] googlemail [dot] com>)
+ * Copyright (C) 2008-2014 [sLaNGjIs](https://slangji.wordpress.com/) (email: <slangjis [at] googlemail [dot] com>)
  * Copyright (C) 2011-2013 Donald J. Fischer (email: <dfischer [at] fischercreativemedia [dot] com>)
  *
  * VIOLATIONS
  *
- * [Violations of the GNU Licenses](//www.gnu.org/licenses/gpl-violation.en.html)
+ * [Violations of the GNU Licenses](https://www.gnu.org/licenses/gpl-violation.en.html)
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
  * GUIDELINES
  *
- * This software meet [Detailed Plugin Guidelines](//wordpress.org/plugins/about/guidelines/)
+ * This software meet [Detailed Plugin Guidelines](https://wordpress.org/plugins/about/guidelines/)
  * paragraphs 1,4,10,12,13,16,17 quality requirements.
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
  * CODING
  *
- * This software implement [GNU style](//www.gnu.org/prep/standards/standards.html) coding standard indentation.
+ * This software implement [GNU style](https://www.gnu.org/prep/standards/standards.html) coding standard indentation.
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
  * VALIDATION
  *
  * This readme.txt rocks. Seriously. Flying colors. It meet the specifications according to
- * WordPress [Readme Validator](//wordpress.org/plugins/about/validator/) directives.
+ * WordPress [Readme Validator](https://wordpress.org/plugins/about/validator/) directives.
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
- * HUMANS (humans.txt)
+ * HUMANS - humans.txt
  *
- * We are the Humans behind this project [humanstxt.org](//humanstxt.org/Standard.html)
+ * We are the Humans behind this project [humanstxt.org](https://humanstxt.org/Standard.html)
  *
  * This software meet detailed humans rights belongs to your own author and to their respective other authors.
  * The author of this plugin is available at any time, to make all changes, or corrections, to respect these specifications.
  *
  * THANKS
  *
- * Thanks to Donald J. Fischer a.k.a prophecy2040 @ www.fischercreativemedia.com for this plugin!
+ * Thanks to Donald J. Fischer a.k.a prophecy2040 @ www.fischercreativemedia.com for this plugin! (prophecy2040)
  *
  * TODOLIST
  *
- * [to-do list and changelog](//wordpress.org/plugins/global-admin-bar-hide-or-remove/changelog/)
+ * [to-do list and changelog](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/changelog/)
  */
 
 	/**
 	 * @package     WordPress Plugin
 	 * @subpackage  Global Hide Admin Tool Bar
-	 * @description Global Hide Front and Back End Toolbar Manager According to Logged In Admin and User Roles
-	 * @author      slangjis &CO prophecy2040
+	 * @description Global Hide Front End Admin Tool Bar Manager According to User Roles
+	 * @author      slangji
 	 * @status      Code in Becoming!
 	 * @since       3.1+
 	 * @branche     2014
-	 * @version     1.6.1
+	 * @version     1.6.1.1
 	 * @build       2014-04-16 1ST - 2014-04-14
 	 */
 
@@ -142,7 +151,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 		{
 
-			wp_die( __( 'This Plugin Requires WordPress 3.1+ or Greater: Activation Stopped!', 'global-admin-bar-hide-or-remove'  ) );
+			wp_die( __( 'This plugin requires WordPress 3.1+ or greater: Activation Stopped.' ) );
 
 		}
 
@@ -168,10 +177,6 @@ Humans URI: http://humanstxt.org/Standard.html
 		}
 
 	add_action( 'activated_plugin', 'ghatb_1st', 0 );
-
-	$path    = plugin_dir_path( __FILE__ ) . '/lang/';
-	$loaded  = $path;
-	$loaded2 = load_plugin_textdomain( 'global-admin-bar-hide-or-remove', false, $loaded );
 
 	global $show_admin_bar;
 
@@ -275,7 +280,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 				{
 
-					$links[] = '<a title="' . __( 'Plugin Options Settings Page', 'global-admin-bar-hide-or-remove' ) . '" href="' . admin_url( 'options-general.php?page=global-hide-toolbar' ) . '">' . __( 'Set', 'global-admin-bar-hide-or-remove' ) . '</a>';
+					$links[] = '<a title="' . __( 'Plugin Options Settings Page' ) . '" href="' . admin_url( 'options-general.php?page=global-hide-toolbar' ) . '">' . __( 'Set' ) . '</a>';
 
 				}
 
@@ -289,7 +294,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 				{
 
-					$links[] = '<a title="' . __( 'Plugin Options Settings Page', 'global-admin-bar-hide-or-remove' ) . '" href="' . admin_url( 'options-general.php?page=global-hide-toolbar' ) . '">' . __( 'Set', 'global-admin-bar-hide-or-remove' ) . '</a>';
+					$links[] = '<a title="' . __( 'Plugin Options Settings Page' ) . '" href="' . admin_url( 'options-general.php?page=global-hide-toolbar' ) . '">' . __( 'Set' ) . '</a>';
 
 				}
 
@@ -305,11 +310,9 @@ Humans URI: http://humanstxt.org/Standard.html
 
 				{
 
-					$links[] = '<a title="' . __( 'Bugfix and Suggestions', 'global-admin-bar-hide-or-remove' ) . '" href="//slangji.wordpress.com/contact/">' . __( 'Contact', 'global-admin-bar-hide-or-remove' ) . '</a>';
+					$links[] = '<a title="' . __( 'Offer a Beer to sLa' ) . '" href="https://slangji.wordpress.com/donate/">' . __( 'Donate' ) . '</a>';
 
-					$links[] = '<a title="' . __( 'Offer a Beer to sLa', 'global-admin-bar-hide-or-remove' ) . '" href="//slangji.wordpress.com/donate/">' . __( 'Donate', 'global-admin-bar-hide-or-remove' ) . '</a>';
-
-					$links[] = '<a title="' . __( 'Visit other author plugins', 'global-admin-bar-hide-or-remove' ) . '" href="//slangji.wordpress.com/plugins/">' . __( 'Other', 'global-admin-bar-hide-or-remove' ) . '</a>';
+					$links[] = '<a title="' . __( 'Bugfix and Suggestions' ) . '" href="https://slangji.wordpress.com/contact/">' . __( 'Contact' ) . '</a>';
 
 				}
 
@@ -448,7 +451,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 						{
 
-							add_options_page( __( 'Hide Admin Bar Options', 'global-admin-bar-hide-or-remove' ), __( 'Hide Admin Bar', 'global-admin-bar-hide-or-remove' ), 'manage_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
+							add_options_page( __( 'Hide Admin Bar Options' ), __( 'Hide Admin Bar' ), 'manage_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
 
 						}
 
@@ -458,7 +461,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 						{
 
-							add_options_page( __( 'Hide Toolbar Options', 'global-admin-bar-hide-or-remove' ), __( 'Hide Toolbar Options', 'global-admin-bar-hide-or-remove' ), 'manage_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
+							add_options_page( __( 'Hide Toolbar Options' ), __( 'Hide Toolbar Options' ), 'manage_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
 
 						}
 
@@ -474,7 +477,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 						{
 
-							add_options_page( __( 'Hide Admin Bar Options', 'global-admin-bar-hide-or-remove' ), __( 'Hide Admin Bar', 'global-admin-bar-hide-or-remove' ), 'manage_network_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
+							add_options_page( __( 'Hide Admin Bar Options' ), __( 'Hide Admin Bar' ), 'manage_network_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
 
 						}
 
@@ -484,7 +487,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 						{
 
-							add_options_page( __( 'Hide Toolbar Options', 'global-admin-bar-hide-or-remove' ), __( 'Hide Toolbar Options', 'global-admin-bar-hide-or-remove' ), 'manage_network_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
+							add_options_page( __( 'Hide Toolbar Options' ), __( 'Hide Toolbar Options' ), 'manage_network_options', 'global-hide-toolbar', 'ghatb_admin_bar_page' );
 
 						}
 
@@ -619,7 +622,7 @@ Humans URI: http://humanstxt.org/Standard.html
 ?>
 <div class="wrap">
 <h2 class="nav-tab-wrapper">
-<a href="?page=global-hide-toolbar" class="nav-tab"><?php _e( 'Settings', 'global-admin-bar-hide-or-remove' ) ?></a>
+<a href="?page=global-hide-toolbar" class="nav-tab"><?php _e( 'Settings' ) ?></a>
 <?php
 
 	global $wp_version;
@@ -628,7 +631,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 		{
 
-			_e( 'Global Hide Admin Bar - 1.6.1', 'global-admin-bar-hide-or-remove' );
+			_e( 'Global Hide Admin Bar - 1.6.1.1' );
 
 		}
 
@@ -638,7 +641,7 @@ Humans URI: http://humanstxt.org/Standard.html
 
 		{
 
-			_e( 'Global Hide Toolbar - 1.6.1', 'global-admin-bar-hide-or-remove' );
+			_e( 'Global Hide Toolbar - 1.6.1.1' );
 
 		}
 
@@ -649,7 +652,7 @@ Humans URI: http://humanstxt.org/Standard.html
 <table class="form-table">
 <tr valign="top">
 <td style="text-align:left;vertical-align:top" colspan="2">
-<?php _e( 'This plugin turn off the <strong>FRONT END</strong> Toolbar that is displayed for logged in users in WordPress 3.1+ or later.', 'global-admin-bar-hide-or-remove' );?>
+<?php _e( 'This plugin turn off the <strong>FRONT END</strong> Toolbar that is displayed for logged in users in WordPress 3.1+ or later.' );?>
 </td>
 </tr>
 <tr valign="top">
@@ -669,7 +672,7 @@ Humans URI: http://humanstxt.org/Standard.html
 </td>
 <td style="text-align:left;vertical-align:top;line-height:14px">
 <strong>
-<?php _e( 'Hide Toolbar on Front End for Logged In Users', 'global-admin-bar-hide-or-remove' ); ?>
+<?php _e( 'Hide Toolbar on Front End for Logged In Users' ); ?>
 </strong>
 </td>
 </tr>
@@ -677,7 +680,7 @@ Humans URI: http://humanstxt.org/Standard.html
 <td style="text-align:right;vertical-align:top;width:25px">&nbsp;</td>
 <td style="text-align:left; vertical-align: top;line-height:14px">
 <div style="margin:-10px 0 8px 15px;font-style:italic">
-<?php _e( 'Hide only for the following roles:', 'global-admin-bar-hide-or-remove' ); ?>
+<?php _e( 'Hide only for the following roles:' ); ?>
 <br><br>
 </div>
 <?php
@@ -706,7 +709,7 @@ Humans URI: http://humanstxt.org/Standard.html
 </td>
 <td style="text-align:left;vertical-align:top;line-height:14px">
 <strong>
-<?php _e( 'Hide "Show Toolbar when viewing site" on <a href="' . admin_url( 'profile.php' ) . '">Your Profile</a> users page - <strong>(Beta Option Not for Production Sites)</strong>', 'global-admin-bar-hide-or-remove' ); ?>
+<?php _e( 'Hide "Show Toolbar when viewing site" on <a href="' . admin_url( 'profile.php' ) . '">Your Profile</a> users page - <strong>(Beta Option Not for Production Sites)</strong>' ); ?>
 </strong>
 </td>
 </tr>
@@ -714,7 +717,7 @@ Humans URI: http://humanstxt.org/Standard.html
 <td style="text-align:right;vertical-align:top;width:25px">&nbsp;</td>
 <td style="text-align:left;vertical-align:top;line-height:14px">
 <div style="margin:-10px 0 8px 15px;font-style:italic">
-<?php _e( 'Hide only for the following roles:', 'global-admin-bar-hide-or-remove' ); ?>
+<?php _e( 'Hide only for the following roles:' ); ?>
 <br><br>
 </div>
 <?php
@@ -728,11 +731,11 @@ Humans URI: http://humanstxt.org/Standard.html
 </tr>
 <tr valign="top">
 <td style="text-align:left;vertical-align:top" colspan="2">
-<?php _e( 'It may become obsolete when <strong>Core Team</strong> add their own global option <a title="WordPress features are being developed plugins first" href="//make.wordpress.org/core/features-as-plugins/">features are being developed plugins first</a>.', 'global-admin-bar-hide-or-remove' ); ?>
+<?php _e( 'It may become obsolete when <strong>Core Team</strong> add their own global option <a title="WordPress features are being developed plugins first" href="https://make.wordpress.org/core/features-as-plugins/">features are being developed plugins first</a>.' ); ?>
 </td>
 </tr>
 </table>
-<p class="submit"><input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'global-admin-bar-hide-or-remove' ); ?>"/></p>
+<p class="submit"><input type="submit" class="button-primary" value="<?php _e( 'Save Changes' ); ?>"/></p>
 </form>
 </div>
 <?php

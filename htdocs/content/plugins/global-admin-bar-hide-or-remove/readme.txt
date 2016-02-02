@@ -1,22 +1,28 @@
-=== Hide Admin Bar and Toolbar ===
-Contributors: slangjis
-Donate link: //slangji.wordpress.com/donate/
-Tags: admin, admin-bar, adminbar, bar, disable, disable-admin-bar, disable-toolbar, disable-wordpress-admin-bar, disable-wordpress-toolbar, hide, hide-admin-bar, hide-toolbar, hidding, remove, slangjis, toolbar
-Stable tag: 1.6.1
+=== Hide Admin Bar Toolbar ===
+Contributors: sLaNGjI, prophecy2040
+Donate link: https://slangji.wordpress.com/donate/
+Tags: sLaNGjIs, admin, admin-bar, adminbar, bar, global, global-hide-admin-bar, global-hide-toolbar, hide, hide-admin-bar, hide-toolbar, toolbar,
 Requires at least: 3.1
-Tested up to: 4.4
+Tested up to: 4.5
+Stable tag: 1.6.1.1
 License: GPLv2 or later
-License URI: //www.gnu.org/licenses/gpl-2.0.html
-wordpress plugin hide admin bar toolbar adding global options to hidding front end adminbar according logged in administrators and users roles profile
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+WordPress plugin hide admin bar or toolbar frontend adding adminbar options according to logged in superadmins administrators and users roles profiles
+
 == Description ==
-This plugin add global options to hide front end admin bar or toolbar according to logged in user roles. To remove the back end use the included BRUTE FORCE PLUGIN. Part of coding of BRUTE FORCE PLUGIN was derived directly from <a title="slangjis" href="//slangji.wordpress.com/">sLa NGjI's</a> <a title="WP Admin Bar Removal" href="//wordpress.org/plugins/wp-admin-bar-removal/">WP Admin Bar Removal</a> and <a title="WP Toolbar Removal" href="//wordpress.org/plugins/wp-Toolbar-removal/">WP Toolbar Removal</a> and was released under GPLv2 or later License: this plugin use same License GPLv2 or later. <a title="About Global Hide Admin Tool Bar Plugin" href="//wordpress.org/support/topic/brute-force-plugin-license-infringement/">Read More Here</a>
 
-Remember that this plugin it may become obsolete when the Core Team adds it their own global options [features are being developed plugins first](//make.wordpress.org/core/features-as-plugins/).
+This WordPress plugin <a href="https://wordpress.org/plugins/toolbar-removal-completely-disable/">Hide Admin Bar or Toolbar</a> adding global options for hidding the frontend adminbar or toolbar according to logged in superadmins, administrators, users roles profiles. To disable the backend use instead <a href="https://wordpress.org/plugins/toolbar-removal-completely-disable/">Disable Admin Bar or Toolbar</a> extension. To remove completely both frontend and backend Admin Bar or Toolbar use <a href="https://wordpress.org/plugins/wp-admin-bar-removal/">WP Admin Bar Removal</a> or <a href="https://wordpress.org/plugins/wp-toolbar-removal/">WP Toolbar Removal</a> - Build 2016-01-05 - The configuration is Settable and this plugin is No Logo!
 
-[sLaNGjIs Team do not provide support on WordPress.org forum](//wordpress.org/plugins/global-admin-bar-hide-or-remove/other_notes/)
+**This plugin was approved on this repository online since 2011-2-24**
 
+[sLaNGjIs Team not provide support on wordpress.org forum and reviews](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/other_notes/)
+
+Remember that this plugin it may become obsolete when the Core Team adds it their own global options [features are being developed plugins first](https://make.wordpress.org/core/features-as-plugins/).
+
+BRUTE FORCE PLUGIN - Part of coding of BRUTE FORCE PLUGIN was derived directly from <a href="https://slangji.wordpress.com/">sLa NGjI's</a> <a href="https://wordpress.org/plugins/wp-admin-bar-removal/">WP Admin Bar Removal</a> and <a href="https://wordpress.org/plugins/wp-toolbar-removal/">WP Toolbar Removal</a> and was released under GPLv2 or later License: this plugin use same License GPLv2 or later. <a href="https://wordpress.org/support/topic/brute-force-plugin-license-infringement/">Read More Here</a>
 `
-BRUTEFORCE PLUGIN INCLUDED ON THIS PAKAGE WAS DISCONTINUED
+BRUTEFORCE PLUGIN INCLUDED ON THIS PACKAGE WAS DISCONTINUED
 ON 2015-08-31 AND IS NOT LONGER DEVELOPED - ALL FILES COPY
 WAS DELETED AND REMOVED FROM ALL DISTIBUTIONS DUE COPYRIGHT
 INFRINGEMENT ON IT CODING - ALL WAS MOVED TO LEGITIMATE
@@ -50,15 +56,16 @@ NOT USE BOTH MAIN AND BRUTE FORCE PLUGIN AT THE SAME TIME!
 
 NOT USE BOTH MAIN AND BRUTE FORCE PLUGIN AT THE SAME TIME!
 
-* [My Others WordPress Plugins](https://slangji.wordpress.com/plugins/) on [Softpedia Webscripts](http://webscripts.softpedia.com/publisher/sLa-1869786722.html) [GitHub](https://github.com/slangji)
+* [My Others WordPress Plugins](https://slangji.wordpress.com/plugins/) on [Softpedia Webscripts](webscripts.softpedia.com/publisher/sLa-1869786722.html) [GitHub](https://github.com/slangji)
  * [WP Overview (lite)](https://wordpress.org/plugins/wp-overview-lite/) (modules updated)
- * [WP Missed Schedule](https://wordpress.org/plugins/wp-missed-schedule/) 232.000+ Downloads 70.000+ Installs
- * [Global Hide Admin Bar and Toolbar](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/) (new)
- * [WP Admin Bar Removal](https://wordpress.org/plugins/wp-admin-bar-removal/) Linked at [softpedia.com](http://webscripts.softpedia.com/script/Modules/WordPress-Plugins/Admin-Bar-Removal-completely-disable-73547.html)
- * [WP ToolBar Removal](https://wordpress.org/plugins/wp-toolbar-removal/) Linked at [softpedia.com](http://webscripts.softpedia.com/script/Modules/WordPress-Plugins/ToolBar-Removal-completely-disable-73548.html)
+ * [WP Missed Schedule](https://wordpress.org/plugins/wp-missed-schedule/) 250.000+ Downloads 70.000+ Installs
+ * [Hide Admin Bar and Toolbar](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/) (new)
+ * [Disable Admin Bar and Toolbar](https://wordpress.org/plugins/toolbar-removal-completely-disable/) (basic tool)
+ * [WP Admin Bar Removal](https://wordpress.org/plugins/wp-admin-bar-removal/) Linked at [softpedia.com](webscripts.softpedia.com/script/Modules/WordPress-Plugins/Admin-Bar-Removal-completely-disable-73547.html)
+ * [WP Toolbar Removal](https://wordpress.org/plugins/wp-toolbar-removal/) Linked at [softpedia.com](webscripts.softpedia.com/script/Modules/WordPress-Plugins/ToolBar-Removal-completely-disable-73548.html)
  * [One Click Logout](https://wordpress.org/plugins/one-click-logout/) (new)
  * [One Click Logout Barless](https://wordpress.org/plugins/one-click-logout-barless/) (new)
- * [IE Enhancer and Modernizer](https://wordpress.org/plugins/wp-ie-enhancer-and-modernizer/) Linked at [softpedia.com](http://webscripts.softpedia.com/script/Modules/WordPress-Plugins/IE-Enhancer-and-Modernizer-73546.html)
+ * [IE Enhancer and Modernizer](https://wordpress.org/plugins/wp-ie-enhancer-and-modernizer/) Linked at [softpedia.com](webscripts.softpedia.com/script/Modules/WordPress-Plugins/IE-Enhancer-and-Modernizer-73546.html)
  * [Memory Load Consumption db size Usage Indicator](https://wordpress.org/plugins/wp-memory-db-indicator/) (new)
  * [Header and Footer Log](https://wordpress.org/plugins/wp-header-footer-log/) Only For Developers
 
@@ -104,14 +111,14 @@ WARNING: DO NOT USE AND ACTIVATE BOTH THIS AND OTHER PLUGINS AT THE SAME TIME - 
 
 == About Global Hide Admin Bar and Toolbar Plugin ==
 
-The New Owner of this plugin is [sLaNGjIs](//slangji.wordpress.com/) with full rights on it!
+The New Owner of this plugin is [sLaNGjIs Team](https://slangji.wordpress.com/) with full rights on it!
 
-Thanks to Donald J. Fischer @ [fischercreativemedia](//www.fischercreativemedia.com/)
+Thanks to Donald J. Fischer @ [fischercreativemedia](https://www.fischercreativemedia.com/)
 
 According to the Terms of the GNU General Public License version 2 (or later) part of Copyright belongs to your own author and part belongs to their respective others authors:
 
-* Copyright (C) 2013-2015 [slangjis](//profiles.wordpress.org/slangjis/)
-* Copyright (C) 2011-2013 [prophecy2040](//profiles.wordpress.org/prophecy2040/)
+* Copyright (C) 2013-2015 [slangjis](https://profiles.wordpress.org/slangjis/)
+* Copyright (C) 2011-2013 [prophecy2040](https://profiles.wordpress.org/prophecy2040/)
 
 == Disclaimer ==
 
@@ -137,9 +144,9 @@ Our team has tried to respond to all for more long years, and maintained the sup
 
 Failing to provide a service that gives us satisfaction, as of today August 15, 2014 we abandon the active support with this type of structure, started since July 7, 2007 to try to give one type of personalized targeted service to user requests.
 
-1. Bug's [sLaNGjIs GitHub](//github.com/slangji/)
-1. Suggestions [sLaNGjIs Contact](//slangji.wordpress.com/contact/)
-1. Support [sLaNGjIs Premium](//slangji.wordpress.com/premium-support/)
+1. Bug's [sLaNGjIs GitHub](https://github.com/slangji/)
+1. Suggestions [sLaNGjIs Contact](https://slangji.wordpress.com/contact/)
+1. Support [sLaNGjIs Premium](https://slangji.wordpress.com/premium-support/)
 
 * Please note that:
  * We are not interested in reviews on our plugins or themes.
@@ -153,7 +160,9 @@ Possibility that some of us then reply or write on it, will be very low!
 
 latest version of this plugin work with wordpress version 3.1+ to 4.4+
 
-[sLaNGjIs Team do not provide support on WordPress.org forum](//wordpress.org/plugins/global-admin-bar-hide-or-remove/other_notes/)
+**This plugin was approved on this repository online since 2011-2-24**
+
+[sLaNGjIs Team not provide support on WordPress.org forum and reviews](https://wordpress.org/plugins/global-admin-bar-hide-or-remove/other_notes/)
 
 `All releases, prior latest stable, are deprecated, 
 and no longer supported on this project: is very 
@@ -161,13 +170,7 @@ suggested upgrade to the latest build, always!`
 
 = Development Status =
 
-Developmental Code in Becoming!
-
-Version 1.6.6 is planned for end of 2016 (merge tools)
-
-Version 1.6.5 is planned for end of May 2016 (beta)
-
-Version 1.6.4 is planned for end of 2015 (coming soon)
+Version 1.6.4 is planned for end of May 2016 (beta)
 
 Version 1.6.3 is planned for end of May 2015 (beta)
 
@@ -192,14 +195,28 @@ BRUTEFORCE PLUGIN NOW AND FUTURE FOR ANY REASON OF ANY TYPE
 BECAUSE CODE IS POETRY AND NOT CLONE OF OTHER WORKS - THANKS
 `
 
+= 1.6.1.1 =
+* Update [STABLE] Repackaging Refreshing Bugs Fixing
+ * Please update as soon as possible!
+ * Release 1.6 Branche 2014 Revision 1 Update 1 Build 2016-01-05
+ * Full Support and Compatibility for WordPress 3.1+ ~ 4.4+
+ * Preemptive Support for WordPress 4.5-alpha
+ * NEW support and compatibility for WordPress 4.4+
+ * NEW support and compatibility for WordPress 4.3+
+ * NEW support and compatibility for WordPress 4.2+
+ * NEW support and compatibility for WordPress 4.1+
+ * UPDATE plugin repackaging and refreshing
+ * ENHANCEMENT bugs fixing
+ * BUMP Version 1.6.1.1 Build 2016-01-05
+
 = 1.6.1 =
 * The New Cycle [STABLE] New Owner of this Plugin is sLa NGjI's
  * Please update as soon as possible!
  * Released Build 2014-04-16
  * Full Support and Compatibility for WordPress 3.1+ ~ 4.0+
- * Work under [GPLv2](//www.gnu.org/licenses/gpl-2.0.html) or later License.
- * Implement [GNU style](//www.gnu.org/prep/standards/standards.html) coding standard indentation.
- * Meet detailed [Plugin Guidelines](//wordpress.org/plugins/about/guidelines/) quality requirements.
+ * Work under [GPLv2](https://www.gnu.org/licenses/gpl-2.0.html) or later License.
+ * Implement [GNU style](https://www.gnu.org/prep/standards/standards.html) coding standard indentation.
+ * Meet detailed [Plugin Guidelines](https://wordpress.org/plugins/about/guidelines/) quality requirements.
  * NEW key tag plugin authenticity
  * NEW header and footer log
  * NEW class and functions constructor coding isolation
@@ -231,8 +248,8 @@ BECAUSE CODE IS POETRY AND NOT CLONE OF OTHER WORKS - THANKS
  * BUMP Version 1.6.1 Build 2014-04-16
 
 = 1.6 = 
-* Changed readme.txt and plugin header text to give [sLa NGjI's](//slangji.wordpress.com/) credit, where credit it due. (04/14/2014)
-* Part of coding of BRUTE FORCE plugin was derived directly from [sLa NGjI's](//slangji.wordpress.com/) [WP Admin Bar Removal](//wordpress.org/plugins/wp-admin-bar-removal/) / [WP Toolbar Removal](//wordpress.org/plugins/wp-toolbar-removal/) / [Disable Admin Bar and ToolBar](//wordpress.org/plugins/toolbar-removal-completely-disable/) plugins, and was released under GPLv2 or later: this plugin use same License GPLv2 or later. [Read More Here](//wordpress.org/support/topic/brute-force-plugin-license-infringement/)
+* Changed readme.txt and plugin header text to give [sLa NGjI's](https://slangji.wordpress.com/) credit, where credit it due. (04/14/2014)
+* Part of coding of BRUTE FORCE plugin was derived directly from [sLa NGjI's](https://slangji.wordpress.com/) [WP Admin Bar Removal](https://wordpress.org/plugins/wp-admin-bar-removal/) / [WP Toolbar Removal](https://wordpress.org/plugins/wp-toolbar-removal/) / [Disable Admin Bar and Toolbar](https://wordpress.org/plugins/toolbar-removal-completely-disable/) plugins, and was released under GPLv2 or later: this plugin use same License GPLv2 or later. [Read More Here](https://wordpress.org/support/topic/brute-force-plugin-license-infringement/)
 
 = 1.5 = 
 * Fix profile view to work as expected. Was either on or off - not based on user role. (12/2013)
@@ -258,6 +275,9 @@ BECAUSE CODE IS POETRY AND NOT CLONE OF OTHER WORKS - THANKS
 * Plugin Release. (02/23/11)
 
 == Upgrade Notice ==
+
+= 1.6.1.1 =
+Update [STABLE] Plugin repackaging and refreshing before merging to new 2016 branche and bugs fixing (Build 2016-01-05)
+
 = 1.6.1 =
 The New Cycle [STABLE] Fixed Users Profile Options and Discontinued BRUTE FORRCE Plugin (Build 2015-08-31) - New Owner of this Plugin is sLa NGjI's (Build 2014-04-16) - Changed readme.txt and plugin header text to give sLa NGjI's credit, where credit it due, for BRUTE FORCE Plugin (Build 2014-04-14)
-

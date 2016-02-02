@@ -8,16 +8,18 @@
 	 * @status      Code in Becoming!
 	 * @todolist    Full Multisite and BuddyPress Compatibility Support
 	 *
-	 * @indentation //www.gnu.org/prep/standards/standards.html
-	 * @license     //www.gnu.org/licenses/gpl-2.0.html
-	 * @link        //wordpress.org/plugins/global-admin-bar-hide-or-remove/
+	 * @indentation www.gnu.org/prep/standards/standards.html
+	 * @license     www.gnu.org/licenses/gpl-2.0.html
+	 * @plugin      wordpress.org/plugins/global-admin-bar-hide-or-remove
 	 *
-	 * @since  WordPress 3.1+
-	 * @tested WordPress 3.7+
+	 * @since       WordPress 3.1+
+	 * @tested      WordPress 3.7+
+	 * @compatible  WordPress 4.4+
+	 * @development WordPress 4.5-alpha
 	 *
 	 * @branche 2014
 	 * @version 1.6.1.2
-	 * @build   2015-08-31 2ND MOD - 2014-04-16 1ST MOD - 2014-04-14
+	 * @build   2016-01-18 3RD MOD - 2015-08-31 2ND MOD - 2014-04-16 1ST MOD - 2014-04-14
 	 */
 
 	if ( !function_exists( 'add_action' ) )
