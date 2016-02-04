@@ -103,6 +103,7 @@
 			var myCalendar = $('#calendar');
 
 			myCalendar.fullCalendar({
+
 				minTime: "11:00:00",
 				maxTime: "22:00:00",
 				resourceAreaWidth: 130,
@@ -163,6 +164,11 @@
 						$time_to_hour = $time_to;
 						$time_to_minute = $minute_to;
 
+						$comment_icon = '';
+						if ( isset( $slot['title'] ) && !empty( $slot['title'] ) ) {
+							$comment_icon = ' <i class="fa fa-comment"></i>';
+						}
+
 						$title = isset( $slot['title'] ) ? $slot['title'] : NULL;
 						$colours = array(
 							'greenLight',
@@ -179,14 +185,14 @@
 						?>
 
 					{
-						title: '<?php echo addslashes(get_avatar(  $slot['timeslot_user'], 20 )); ?> {{ $slot['first_name'] }} {{ $slot['last_name']  }}',
+						title: '<?php echo addslashes(get_avatar(  $slot['timeslot_user'], 20 )); ?> {{ $slot['first_name'] }} {{ $slot['last_name']  }}{{$comment_icon}}',
 						start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', '{{ $time_from_minute }}'),
 						end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', '{{ $time_to_minute }}'),
 						allDay: false,
 						className: ["event", "bg-color-{{ $colour }}", 'event-id-<?php echo $slot['ID']; ?>'],
 						description: '{{ $title }}',
 						slotWidth: 50,
-						resourceId: 'venue-{{ $slot['timeslot_venue'] }}'
+						resourceId: 'venue-{{ $slot['timeslot_venue'] }}',
 					},
 
 						<?php $count ++; ?>
@@ -196,15 +202,22 @@
 				],
 
 				eventRender: function (event, element, icon) {
+
 					if (!event.description == "") {
 						element.find('.fc-event-title').append("<br/><span class='ultra-light'>" + event.description +
 								"</span>");
 					}
+
 					if (!event.icon == "") {
 						element.find('.fc-event-title').append("<i class='air air-top-right fa " + event.icon +
 								" '></i>");
 					}
+
 					element.find('.fc-title').html(event.title);
+
+					// Add a tooltip with description of event
+					element.tooltip({title: event.description});
+
 				},
 
 				windowResize: function (event, ui) {

@@ -199,7 +199,7 @@
 						end: new Date(y, m, d, myjson.time_to, minutes_to),
 						allDay: false,
 						className: ["event", "bg-color-red"],
-						// description: 'sdfojsdofijosdijf osidjf osijdf oisj df',
+						description: jQuery("[name=comments]").val(),
 						slotWidth: 50,
 						resourceId: 'venue-' + myjson.id
 

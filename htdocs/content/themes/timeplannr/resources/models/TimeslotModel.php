@@ -117,6 +117,7 @@ class TimeslotModel {
 				    'date',
 				    'time_from',
 				    'time_to',
+				    'title',
 				    'timeslot_user',
 				    'timeslot_user' => array('timeslot_user' =>
 				        array(
