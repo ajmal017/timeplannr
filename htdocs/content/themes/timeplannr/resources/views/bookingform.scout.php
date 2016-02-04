@@ -177,6 +177,12 @@
 				complete: function(data, data2, data3) {
 
 					var myCalendar = $('#calendar');
+					var comments = jQuery("[name=comments]").val();
+
+					var comment_icon = "";
+					if ( comments != "" ) {
+						comment_icon = ' <i class="fa fa-comment"></i>';
+					}
 
 					var myjson = {};
 					jQuery.each(jQuery(".smart-form input"), function() { myjson[this.name] = this.value; });
@@ -194,7 +200,7 @@
 					// Prepare options fo adding a new event to the calendar view
 					var new_event = {
 
-						title: '<?php echo addslashes(get_avatar( get_current_user_id(), 20 )); ?> <?php echo get_user_name(); ?>',
+						title: '<?php echo addslashes(get_avatar( get_current_user_id(), 20 )); ?> <?php echo get_user_name(); ?>' + comment_icon,
 						start: new Date(y, m, d , myjson.time_from, minutes_from),
 						end: new Date(y, m, d, myjson.time_to, minutes_to),
 						allDay: false,

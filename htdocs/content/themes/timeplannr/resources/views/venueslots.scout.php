@@ -231,7 +231,6 @@
 					// jQuery("#eventLink").attr('href', event.url);
 					// jQuery("#eventContent").dialog({ modal: true, title: event.title });
 
-
 					jQuery("#launch-modal").trigger("click");
 
 					var text_date = date.format("YYYY-MM-DD");
@@ -266,9 +265,9 @@
 
 				eventClick: function(calEvent, jsEvent, view) {
 
-					console.log(calEvent);
+					/*console.log(calEvent);
 					console.log(jsEvent);
-					console.log(view);
+					console.log(view);*/
 
 					// change the border color just for fun
 					jQuery(this).css('border-color', 'red');
@@ -279,14 +278,6 @@
 
 					var currentDate = $("#calendar").fullCalendar('getDate');
 					var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
-					/*
-					var d = currentDate.getDate();
-					var m_text = months[ currentDate.getMonth() ];
-					var y = currentDate.getFullYear();
-					var week_day = days[ currentDate.getDay() ];
-					*/
-
 					var week_day = days[ currentDate.day() - 1 ];
 
 					currentDate = days[ currentDate.weekday() ] + " - " + currentDate.format('MMMM Do, YYYY') ;
