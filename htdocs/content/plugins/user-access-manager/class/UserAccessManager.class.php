@@ -2149,7 +2149,9 @@ class UserAccessManager
              * mime_content_type has been deprecated as the PECL extension file info
              * provides the same functionality (and more) in a much cleaner way.
              */
-            $sFileExt = strtolower(array_pop(explode('.', $sFileName)));
+            $filename_exploded = explode('.', $sFileName);
+            $sFileExt = array_pop( $filename_exploded );
+            //$sFileExt = strtolower(array_pop(explode('.', $sFileName)));
             $aMimeTypes = $this->_getMimeTypes();
 
             if (function_exists('finfo_open')) {
