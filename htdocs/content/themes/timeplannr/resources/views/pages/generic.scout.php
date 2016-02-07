@@ -1,9 +1,20 @@
-<!-- View stored in app/views/welcome.php -->
-<html>
-<head>
-	<title>View example</title>
-</head>
-<body>
-<h1>Hello, <?php echo $name; ?>!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
-</body>
-</html>
+@extends('main')
+
+@section('main')
+
+@loop
+
+
+	<h1>{{ Loop::title() }}</h1>
+
+	<div>
+		{{ Loop::content() }}
+	</div>
+
+@endloop
+
+@stop
+
+@section('sidebar')
+
+@stop

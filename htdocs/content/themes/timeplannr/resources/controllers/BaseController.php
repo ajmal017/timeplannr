@@ -14,4 +14,10 @@ class BaseController extends Controller
 			$this->layout = View::make($this->layout);
 		}
 	}
+
+	public function page() {
+
+		return View::make('pages.generic', array(
+		));
+	}
 }

@@ -54,6 +54,8 @@ class VenueController extends BaseController
 			$this->model = new TimeslotModel();
 			$this->model->insert($data, $current_user->ID);
 
+			echo '1';
+			exit;
 		}
 
 		if (!isset($_GET['id'])) {

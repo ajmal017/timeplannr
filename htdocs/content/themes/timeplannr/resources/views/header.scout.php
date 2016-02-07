@@ -135,24 +135,52 @@
 
     <!-- User info -->
     <div class="login-info">
-				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+        <span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
-					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-                        <?php echo get_avatar( get_current_user_id(), 60 ); ?>
+            <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                <?php echo get_avatar( get_current_user_id(), 60 ); ?>
 
-						<span>
-							<?php $current_user = get_user_meta(get_current_user_id()); ?>
-                            <?php echo $current_user['first_name'][0] . ' ' . $current_user['last_name'][0]; ?>
-						</span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
+                <span>
+                    <?php $current_user = get_user_meta(get_current_user_id()); ?>
+                    <?php echo $current_user['first_name'][0] . ' ' . $current_user['last_name'][0]; ?>
+                </span>
+                <i class="fa fa-angle-down"></i>
+            </a>
 
-				</span>
+        </span>
     </div>
     <!-- end user info -->
 
     <!-- NAVIGATION : This navigation is also responsive-->
     <nav>
+
+        <?php
+
+        $defaults = array(
+
+          'menu'            => '',
+          'container'       => '',
+          'container_class' => 'menu-{menu slug}-container',
+          'container_id'    => '',
+          'menu_class'      => 'menu',
+          'menu_id'         => '',
+          'echo'            => true,
+          'fallback_cb'     => 'wp_page_menu',
+          'before'          => '',
+          'after'           => '',
+          'link_before'     => '',
+          'link_after'      => '',
+          'items_wrap'      => '<ul id=\"%1$s\" class=\"%2$s\">%3$s</ul>',
+          'depth'           => 0,
+          'show_home'           => 0,
+          'walker'          => '');
+
+        ?>
+
+        <?php echo wp_nav_menu( $defaults ); ?>
+
+        <?php /* ?>
+
         <ul>
             <li class="">
                 <a href="/" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
@@ -161,6 +189,9 @@
 		        <a href="/book"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Book a slot</span></a>
 	        </li>
         </ul>
+
+        <?php */ ?>
+
     </nav>
 			<span class="minifyme" data-action="minifyMenu">
 				<i class="fa fa-arrow-circle-left hit"></i>

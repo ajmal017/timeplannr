@@ -216,7 +216,7 @@
 					element.find('.fc-title').html(event.title);
 
 					// Add a tooltip with description of event
-					element.tooltip({title: event.description});
+					element.tooltip({ title: event.description, placement: 'bottom' });
 
 				},
 

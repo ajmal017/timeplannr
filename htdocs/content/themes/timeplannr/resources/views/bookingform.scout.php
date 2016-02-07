@@ -179,6 +179,7 @@
 					var myCalendar = $('#calendar');
 					var comments = jQuery("[name=comments]").val();
 
+
 					var comment_icon = "";
 					if ( comments != "" ) {
 						comment_icon = ' <i class="fa fa-comment"></i>';
@@ -187,10 +188,10 @@
 					var myjson = {};
 					jQuery.each(jQuery(".smart-form input"), function() { myjson[this.name] = this.value; });
 
-					var date = new Date();
-					var d = date.getDate();
-					var m = date.getMonth();
-					var y = date.getFullYear();
+					var date = jQuery("#date").val().split("-");
+					var d = date[2];
+					var m = date[1] - 1;
+					var y = date[0];
 
 					minutes_from = 0;
 					minutes_to = 0;
