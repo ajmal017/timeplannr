@@ -10,17 +10,16 @@
  */
 
 
-Route::get('home', 'VenueController@plan');
+Route::get( 'home', 'VenueController@plan' );
 
-Route::get('page', array('anton', 'uses' => 'VenueController@anton'));
+Route::get( 'page', array( 'anton', 'uses' => 'VenueController@anton') );
 
-Route::get('page', array('venue/find', 'uses' => 'VenueController@find'));
-Route::any('page', array('book', 'uses' => 'VenueController@plan'));
-Route::any('page', array('how-to-use', 'uses' => 'BaseController@page'));
+Route::get( 'page', array( 'venue/find', 'uses' => 'VenueController@find') );
+Route::any( 'page', array( 'book', 'uses' => 'VenueController@plan') );
+Route::any( 'page', array( array( 'how-to-use', 'contact' ), 'uses' => 'BaseController@page') );
 
-
-Route::any('page', array('register', 'uses' => 'VenueController@register'));
-Route::get('page', array('venue/details', 'uses' => 'VenueController@details'));
+Route::any( 'page', array( 'register', 'uses' => 'VenueController@register') );
+Route::get( 'page', array( 'venue/details', 'uses' => 'VenueController@details') );
 
 // Search page
 Route::get('search', function() {
@@ -33,26 +32,3 @@ Route::get('404', function(){
 	exit;
 
 });
-
-
-/*
-
-Route::get('home', function(){
-
-    return View::make('welcome');
-
-});
-
-Route::get('page', array('anton', function(){
-
-	return View::make('anton', array('name' => 'Anton'));
-
-}));
-
-Route::get('page', array('venues', function(){
-
-	return View::make('anton', array('name' => 'Anton'));
-
-}));
-
-*/
