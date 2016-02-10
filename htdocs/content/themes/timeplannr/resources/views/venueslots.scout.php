@@ -226,7 +226,6 @@
 							adjust: {
 								mouse: true,
 								scroll: false,
-								y: -35
 							}
 						}
 					});
