@@ -252,6 +252,7 @@ function theme_name_scripts() {
 	wp_enqueue_script( 'jvectormap', get_template_directory_uri(). '/resources/assets/test/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js', array('jquery'), FALSE , TRUE);
 	wp_enqueue_script( 'jvectormap-world-mill', get_template_directory_uri(). '/resources/assets/test/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js', array('jquery'), FALSE , TRUE);
 	wp_enqueue_script( 'moment', get_template_directory_uri(). '/resources/assets/test/js/plugin/moment/moment.min.js', array(), FALSE , TRUE);
+	wp_enqueue_script( 'qtip', 'http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js', array('jquery'), FALSE , TRUE);
 	// wp_enqueue_script( 'fullcalendar', '/content/themes/timeplannr/resources/assets/test/js/plugin/fullcalendar/jquery.fullcalendar.min.js', array('jquery'), FALSE , TRUE);
 
 	// wp_enqueue_script( 'npm', get_template_directory_uri() . '/resources/assets/js/bootstrap/dist/js/npm.js' );
@@ -292,6 +293,7 @@ function theme_name_scripts() {
 	wp_enqueue_style( 'jquery-time-picker', get_template_directory_uri() . '/resources/assets/js/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css' );
 	wp_enqueue_style( 'form', get_template_directory_uri() . '/resources/assets/css/form.css' );
 	wp_enqueue_style( 'header', get_template_directory_uri() . '/resources/assets/css/header.css' );
+	wp_enqueue_style( 'qtip', 'http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css' );
 	/* END: jQuery timepicker styles */
 
 }

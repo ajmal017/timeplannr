@@ -4,12 +4,9 @@
 
 @loop
 
-
 	<h1>{{ Loop::title() }}</h1>
 
-	<div>
-		{{ Loop::content() }}
-	</div>
+	<div>{{ Loop::content() }}</div>
 
 @endloop
 

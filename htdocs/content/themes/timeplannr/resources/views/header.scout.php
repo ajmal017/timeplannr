@@ -86,7 +86,7 @@
 <!-- HEADER -->
 <header id="header">
     <div id="logo-group">
-        <span id="logo"><img src="/content/uploads/2016/01/logo.png" alt="SmartAdmin"> </span>
+        <span id="logo"><img src="/content/uploads/2016/02/logo.png" alt="Timeplannr"> </span>
     </div>
 
     <!-- pulled right: nav area -->

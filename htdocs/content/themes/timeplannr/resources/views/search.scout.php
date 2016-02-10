@@ -1,6 +1,6 @@
 @include('header')
 
-        <!-- BOOKS COLLECTION -->
+<!-- BOOKS COLLECTION -->
 <div id="books" class="wrapper">
     <div class="bks-title-box">
         <h1>Search results</h1>

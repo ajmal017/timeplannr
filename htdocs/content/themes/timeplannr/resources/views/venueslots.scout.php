@@ -215,8 +215,21 @@
 
 					element.find('.fc-title').html(event.title);
 
-					// Add a tooltip with description of event
-					element.tooltip({ title: event.description, placement: 'bottom' });
+					element.qtip({
+						prerender: true,
+						content: event.description,
+						style: 'qtip-bootstrap',
+						position: {
+							my: 'bottom center',
+							at: 'bottom center',
+							target: 'mouse',
+							adjust: {
+								mouse: true,
+								scroll: false,
+								y: -35
+							}
+						}
+					});
 
 				},
 
@@ -263,7 +276,7 @@
 
 				},
 
-				eventClick: function(calEvent, jsEvent, view) {
+				eventClick: function(data, event, view) {
 
 					/*console.log(calEvent);
 					console.log(jsEvent);
