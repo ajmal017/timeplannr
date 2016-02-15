@@ -1,0 +1,22 @@
+body.login {
+    background-image: url('/content/uploads/2016/02/table-tennis.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#loginform {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.login #nav,
+.login #nav a,
+.login #backtoblog a {
+    color: #fff;
+}
+
+.login #nav a:hover,
+.login #backtoblog a:hover,
+.login h1 a:hover {
+    color: #ddd;
+}
