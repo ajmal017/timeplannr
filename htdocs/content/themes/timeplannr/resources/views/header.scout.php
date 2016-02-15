@@ -98,24 +98,31 @@
         </div>
         <!-- end collapse menu -->
 
-        <!-- #MOBILE -->
-        <!-- Top menu profile link : this shows only when top menu is active -->
-        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
-            <li class="">
-                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-	                <?php echo get_avatar( get_current_user_id(), 30 ); ?>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="<?php echo admin_url(); ?>profile.php" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="<?php echo wp_logout_url( home_url() ); ?>" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <?php // Show profile to logged in users only ?>
+        <?php if ( is_user_logged_in() ) : ?>
+
+            <!-- #MOBILE -->
+            <!-- Top menu profile link : this shows only when top menu is active -->
+            <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+                <li class="">
+                    <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                        <?php echo get_avatar( get_current_user_id(), 30 ); ?>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+
+                        <li>
+                            <a href="<?php echo admin_url(); ?>profile.php" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<?php echo wp_logout_url( home_url() ); ?>" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        <?php endif; ?>
 
         <!-- fullscreen button -->
         <div id="fullscreen" class="btn-header transparent pull-right">
@@ -178,19 +185,6 @@
         ?>
 
         <?php echo wp_nav_menu( $defaults ); ?>
-
-        <?php /* ?>
-
-        <ul>
-            <li class="">
-                <a href="/" title="Home"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
-            </li>
-	        <li class="<?php get_page_by_path('book')->ID == get_the_ID() ? 'active' : ''; ?>">
-		        <a href="/book"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Book a slot</span></a>
-	        </li>
-        </ul>
-
-        <?php */ ?>
 
     </nav>
 			<span class="minifyme" data-action="minifyMenu">
