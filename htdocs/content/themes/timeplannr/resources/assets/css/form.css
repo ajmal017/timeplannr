@@ -16,3 +16,10 @@ body #header #logo-group #logo {
 body #header #logo-group #logo img {
     width: 148px;
 }
+
+body.login {
+    background-image: url('/content/uploads/2016/02/table-tennis.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
