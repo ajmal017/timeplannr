@@ -16,7 +16,17 @@ Route::get( 'page', array( 'anton', 'uses' => 'VenueController@anton') );
 
 Route::get( 'page', array( 'venue/find', 'uses' => 'VenueController@find') );
 Route::any( 'page', array( 'book', 'uses' => 'VenueController@plan') );
-Route::any( 'page', array( array( 'how-to-use', 'contact', 'suggest-a-venue' ), 'uses' => 'BaseController@page') );
+Route::any( 'page', array(
+
+	array(
+		'how-to-use',
+		'contact',
+		'suggest-a-venue',
+		'about'
+	),
+
+	'uses' => 'BaseController@page'
+) );
 
 Route::any( 'page', array( 'register', 'uses' => 'VenueController@register') );
 Route::get( 'page', array( 'venue/details', 'uses' => 'VenueController@details') );
