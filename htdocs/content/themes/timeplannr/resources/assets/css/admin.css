@@ -3,10 +3,21 @@ body.login {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    background-size: cover 100%;
+    height: auto;
+    padding-bottom: 20px;
 }
 
 #loginform {
     background-color: rgba(255, 255, 255, 0.6);
+}
+
+#login {
+    padding-top: 3%;
+}
+
+#login .message.register {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .login #nav,
@@ -19,4 +30,30 @@ body.login {
 .login #backtoblog a:hover,
 .login h1 a:hover {
     color: #ddd;
+}
+
+.login form {
+    padding: 16px 24px 20px;
+}
+
+.login h1 a {
+    padding-bottom: 0;
+}
+
+.login #registerform {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.login #registerform input.input {
+    font-size: 16px;
+    padding: 6px 8px;
+    margin: 2px 6px 6px 0;
+}
+
+.login #registerform label {
+    font-size: 12px;
+}
+
+.login #registerform #reg_passmail {
+    font-size: 12px;
 }

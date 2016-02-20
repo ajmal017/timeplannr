@@ -490,3 +490,18 @@ function my_custom_login() {
 	echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/resources/assets/css/admin.css"/>';
 }
 add_action('login_head', 'my_custom_login');
+
+function za_change_login_message( $message )
+{
+	// change messages that contain 'Register'
+	if ( strpos( $message, 'Register' ) !== FALSE ) {
+		$newMessage = "Fill the form below to start using Timeplannr.";
+		return '<p class="message register">' . $newMessage . '</p>';
+	}
+	else {
+		return $message;
+	}
+}
+
+// add our new function to the login_message hook
+add_action( 'login_message', 'za_change_login_message' );
