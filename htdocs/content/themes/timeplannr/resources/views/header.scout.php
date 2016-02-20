@@ -78,13 +78,14 @@
     * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 -->
 
-<body class="menu-on-top">
+<body class="menu-on-top container">
 <!--[if lt IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- HEADER -->
 <header id="header">
+
     <div id="logo-group">
         <a href="/"><span id="logo"><img src="/content/uploads/2016/02/logo.png" alt="Timeplannr"> </span></a>
     </div>

@@ -1,9 +1,9 @@
 @include('header')
 
-<div class="container-dummy" id="main" style="padding: 10px 20px;">
-
-	@yield('main')
-
+<div id="main">
+	<div id="content">
+		@yield('main')
+	</div>
 </div>
 
 @include('footer')
