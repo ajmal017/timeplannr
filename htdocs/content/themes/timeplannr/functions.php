@@ -512,7 +512,7 @@ add_action( 'login_message', 'az_change_login_message' );
 function az_switch_homepage() {
 
 	if ( is_user_logged_in() ) {
-		$page = url_to_postid('how-to-user'); // for logged in users
+		$page = url_to_postid('how-to-use'); // for logged in users
 		update_option( 'page_on_front', $page );
 		update_option( 'show_on_front', 'page' );
 	} else {
