@@ -491,7 +491,7 @@ function my_custom_login() {
 }
 add_action('login_head', 'my_custom_login');
 
-function za_change_login_message( $message )
+function az_change_login_message( $message )
 {
 	// change messages that contain 'Register'
 	if ( strpos( $message, 'Register' ) !== FALSE ) {
@@ -504,4 +504,21 @@ function za_change_login_message( $message )
 }
 
 // add our new function to the login_message hook
-add_action( 'login_message', 'za_change_login_message' );
+add_action( 'login_message', 'az_change_login_message' );
+
+/**
+ * Switch the homepage for logged in users
+ */
+function az_switch_homepage() {
+
+	if ( is_user_logged_in() ) {
+		$page = url_to_postid('about'); // for logged in users
+		update_option( 'page_on_front', $page );
+		update_option( 'show_on_front', 'page' );
+	} else {
+		$page = url_to_postid('how-to-use'); // for logged in users
+		update_option( 'page_on_front', $page );
+		update_option( 'show_on_front', 'page' );
+	}
+}
+add_action( 'init', 'az_switch_homepage' );
