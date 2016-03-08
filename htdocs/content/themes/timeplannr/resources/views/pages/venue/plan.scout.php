@@ -54,7 +54,7 @@
 					'filter': jQuery(this).val()
 				};
 
-				// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+				// Filter the booking slots by the venue
 				jQuery.post('/cms/wp-admin/admin-ajax.php', data, function(response) {
 
 					var responseObject = JSON.parse(response);

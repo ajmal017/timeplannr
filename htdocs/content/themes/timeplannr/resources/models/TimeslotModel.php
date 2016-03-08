@@ -169,7 +169,7 @@ class TimeslotModel {
 			$postmeta->save();
 		}
 
-		return TRUE;
+		return $post;
 	}
 
 }

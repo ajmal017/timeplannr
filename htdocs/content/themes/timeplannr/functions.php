@@ -305,8 +305,6 @@ function get_events_callback() {
 
 	$filter =  isset( $_POST['filter'] ) ? $_POST['filter'] : NULL;
 
-	global $wpdb; // this is how you get access to the database
-
 	if (!isset($_GET['id'])) {
 
 		$allVenues = VenueModel::all();
@@ -325,9 +323,9 @@ function get_events_callback() {
 			$temp = array();
 			$temp['ID'] = $venue['ID'];
 			$temp['post_title'] = $venue['post_title'];
-			$temp['post_name'] = $venue['post_name'];
-			$filteredVenuesArray[$venue['ID']] = $temp;
-		};
+				$temp['post_name'] = $venue['post_name'];
+				$filteredVenuesArray[$venue['ID']] = $temp;
+			};
 
 	} else {
 
@@ -335,24 +333,16 @@ function get_events_callback() {
 
 	}
 
-	// Get venue details
-	// $venueDetails = VenueModel::details($_GET['id']);
-
-	// dump($filteredVenuesArray);
-
 	// Booked slots for the venue
 	$bookedSlots = TimeslotModel::perVenue( array_keys($filteredVenuesArray) );
+
 	$slots = array();
 
-	// dump($bookedSlots, false);
 
 	foreach ($bookedSlots as $slot) {
 
-		$slot_array = array();
-
 		// if ($count > 25) $count = 0;
 		$date = strtotime( $slot['date'] );
-		$day = date( "d", $date );
 
 		$time_from = $slot['time_from'];
 		$time_from_hour = $time_from;
@@ -384,39 +374,28 @@ function get_events_callback() {
 		);
 
 		$colour = $colours[ rand( 0, sizeof( $colours ) - 1 ) ];
-
 		$slot_array = array();
+		$delete_icon = '';
 
-		$slot_array['title'] = get_avatar( $slot['timeslot_user'], 20 ) . ' ' . $slot['first_name'] . ' ' . $slot['last_name'];
-		// $slot_array['start'] = 'new Date(y, m, ' . $day . ', ' . $time_from_hour . ', 0)';
-		// $slot_array['end'] = 'new Date(y, m, ' . $day . ', ' . $time_to_hour . ', 0)';
-		// $slot_array['start'] = '2015-11-22T10:30:00';
+		global $current_user;
 
+		if ( $current_user->ID == $slot['timeslot_user'] ) {
+			$delete_icon = "<a id='delete-event-link-" . $slot['ID'] .  "' style='margin-top: 3px; float: right; margin-right: 4px; z-index: 10;' class='closeon delete-event-link'><i style=\"font-size: 12px; color: white;\" class=\"fa fa-times-circle\"></i></a>";
+		}
+
+		$slot_array['title'] = get_avatar( $slot['timeslot_user'], 20 ) . $slot['first_name'] . ' ' . $slot['last_name'] . $delete_icon;
 		$slot_array['start'] = date( "Y-m-d", $date) . 'T' . $time_from_hour . ':' . $time_from_minute . ':00';
 		$slot_array['end'] = date( "Y-m-d", $date) . 'T' . $time_to_hour . ':' . $time_to_minute . ':00';
 		$slot_array['allDay'] = false;
-		$slot_array['className'] = array( 'event', 'bg-color-' . $colour);
+		$slot_array['className'] = array( 'event', 'bg-color-' . $colour, 'event-id-' .  $slot['ID'] );
 		$slot_array['description'] = $title;
 		$slot_array['slotWidth'] = 50;
 		$slot_array['resourceId'] = 'venue-' . $slot['timeslot_venue'];
+		$slot_array['id'] = $slot['ID'];
 
 		$slots[] = $slot_array;
 
-
-		/*        start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', 0),
-				end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', 0),
-				allDay: false,
-				className: ["event", "bg-color-{{ $colour }}"],
-				description: '{{ $title }}',
-				slotWidth: 50,
-				resourceId: 'venue-{{ $slot['timeslot_venue'] }}',*/
-
-
-		// $count ++;
-
 	}
-
-	// dump($slots);
 
 	echo json_encode(array('slots' => $slots, 'all_venues' => $allVenuesArray, 'filtered_venues' => $filteredVenuesArray));
 
@@ -522,3 +501,33 @@ function az_switch_homepage() {
 	}
 }
 add_action( 'init', 'az_switch_homepage' );
+
+add_action( 'wp_enqueue_scripts', function() {
+
+	wp_enqueue_script( 'test', get_stylesheet_directory_uri() . '/test.js', array( 'jquery' ), rand() );
+
+	wp_localize_script( 'test', 'API_COURSE', array(
+		'posts_url' => esc_url_raw( rest_url( 'wp/v2/posts/549')),
+		'saving' => __( 'Save', 'api-course' ),
+		'nonce' => wp_create_nonce( 'wp_rest' )
+	));
+
+});
+
+/**
+ * Add REST API support to an already registered post type.
+ */
+add_action( 'init', 'timeslot_rest_support', 25 );
+function timeslot_rest_support() {
+
+	global $wp_post_types;
+
+	$post_type_name = 'timeslot';
+
+	if( isset( $wp_post_types[ $post_type_name ] ) ) {
+		$wp_post_types[$post_type_name]->show_in_rest = true;
+		$wp_post_types[$post_type_name]->rest_base = $post_type_name;
+		$wp_post_types[$post_type_name]->rest_controller_class = 'WP_REST_Posts_Controller';
+	}
+
+}

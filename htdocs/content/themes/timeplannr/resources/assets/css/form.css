@@ -23,3 +23,7 @@ body.login {
     background-attachment: fixed;
     background-position: center;
 }
+
+#logo {
+    margin-top: 0;
+}

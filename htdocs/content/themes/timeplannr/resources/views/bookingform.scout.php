@@ -6,7 +6,7 @@
 					×
 				</button>
 				<h4 class="modal-title">
-					<span id="logo"> <img src="/content/themes/timeplannr/resources/assets/test/img/logo.png" alt="SmartAdmin"> </span>
+					<span id="logo"> <img src="/content/uploads/2016/02/logo.png" width="140" alt="SmartAdmin"> </span>
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -179,7 +179,6 @@
 					var myCalendar = $('#calendar');
 					var comments = jQuery("[name=comments]").val();
 
-
 					var comment_icon = "";
 					if ( comments != "" ) {
 						comment_icon = ' <i class="fa fa-comment"></i>';
@@ -198,17 +197,21 @@
 					if ( parseFloat(myjson.time_from) !== parseInt(myjson.time_from, 10) ) { minutes_from = 30; }
 					if ( parseFloat(myjson.time_to) !== parseInt(myjson.time_to, 10) ) { minutes_to = 30; }
 
+					var response = JSON.parse( data.responseText ) ;
+
 					// Prepare options fo adding a new event to the calendar view
 					var new_event = {
 
+						id: response.ID,
 						title: '<?php echo addslashes(get_avatar( get_current_user_id(), 20 )); ?> <?php echo get_user_name(); ?>' + comment_icon,
 						start: new Date(y, m, d , myjson.time_from, minutes_from),
 						end: new Date(y, m, d, myjson.time_to, minutes_to),
 						allDay: false,
-						className: ["event", "bg-color-red"],
+						className: ["event", "bg-color-red", 'event-id-' + response.ID],
 						description: jQuery("[name=comments]").val(),
 						slotWidth: 50,
-						resourceId: 'venue-' + myjson.id
+						resourceId: 'venue-' + myjson.id,
+						userId: <?php echo get_current_user_id(); ?>
 
 					};
 

@@ -185,14 +185,16 @@
 						?>
 
 					{
+						id: <?php echo $slot['ID']; ?>,
 						title: '<?php echo addslashes(get_avatar(  $slot['timeslot_user'], 20 )); ?> {{ $slot['first_name'] }} {{ $slot['last_name']  }}{{$comment_icon}}',
 						start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', '{{ $time_from_minute }}'),
 						end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', '{{ $time_to_minute }}'),
 						allDay: false,
 						className: ["event", "bg-color-{{ $colour }}", 'event-id-<?php echo $slot['ID']; ?>'],
-						description: '{{ $title }}',
+						description: '{{ addslashes( $title ) }}',
 						slotWidth: 50,
 						resourceId: 'venue-{{ $slot['timeslot_venue'] }}',
+						userId: <?php echo $slot['timeslot_user']; ?>
 					},
 
 						<?php $count ++; ?>
@@ -220,15 +222,13 @@
 						content: event.description,
 						style: 'qtip-bootstrap',
 						position: {
-							my: 'bottom center',
-							at: 'bottom center',
-							target: 'mouse',
-							adjust: {
-								mouse: true,
-								scroll: false,
-							}
+							at: 'bottom left',
 						}
 					});
+
+					if ( <?php echo get_current_user_id(); ?> == event.userId ) {
+						element.append( "<a id='delete-event-link-" + event.id + "' style='position: absolute; top: 5px; right: 5px; z-index: 10;' class='closeon delete-event-link'><i style=\"font-size: 12px; color: white;\" class=\"fa fa-times-circle\"></i></a>" );
+					}
 
 				},
 
@@ -238,11 +238,7 @@
 
 				dayClick:  function(date, jsEvent, view, resourceObj) {
 
-					// set the values and open the modal
-					// jQuery("#eventInfo").html(event.description);
-					// jQuery("#eventLink").attr('href', event.url);
-					// jQuery("#eventContent").dialog({ modal: true, title: event.title });
-
+					$("[name=comments]").val("");
 					jQuery("#launch-modal").trigger("click");
 
 					var text_date = date.format("YYYY-MM-DD");
@@ -262,29 +258,9 @@
 					// Prefill the time slider with select value that ends and +3 hours
 					mySlider.slider('option', 'values', [hour + minute_number , hour + 3 + minute_number]);
 
-					/*
-					var myEvent = {
-						resource:"venue-75",
-						title:"my new event",
-						allDay: true,
-						start: new Date(),
-						end: new Date()
-					};
-					myCalendar.fullCalendar( 'renderEvent', myEvent );
-					*/
-
 				},
 
-				eventClick: function(data, event, view) {
-
-					/*console.log(calEvent);
-					console.log(jsEvent);
-					console.log(view);*/
-
-					// change the border color just for fun
-					jQuery(this).css('border-color', 'red');
-
-				},
+				eventClick: function(event) {},
 
 				eventAfterAllRender: function(a) {
 
@@ -294,7 +270,75 @@
 
 					currentDate = days[ currentDate.weekday() ] + " - " + currentDate.format('MMMM Do, YYYY') ;
 					$('.fc-toolbar .fc-left h2').text(currentDate);
+
 				}
+
+			});
+
+			function delete_event( id ) {
+
+				$('.event-id-' + id).hide();
+				$('#calendar').fullCalendar('removeEvents', id);
+				$('.qtip').hide();
+
+				// Delete the event via REST API
+				$.ajax( {
+					url: '/wp-json/wp/v2/timeslot/' + id,
+					type: 'DELETE',
+					beforeSend: function ( xhr ) {
+						xhr.setRequestHeader( 'X-WP-Nonce', API_COURSE.nonce );
+					}
+				} ).done( function ( response ) {
+
+					$('#calendar').fullCalendar('removeEvents', id);
+
+					$.smallBox({
+						title : "Booking deleted",
+						content : "<i class='fa fa-clock-o'></i> <i>The booking has been deleted successfully</i>",
+						color : "#659265",
+						iconSmall : "fa fa-check fa-2x fadeInRight animated",
+						timeout : 4000
+					});
+
+				} );
+
+			}
+
+			$('body').on('click', 'a.delete-event-link', function(e) {
+
+				var t = $(this);
+
+				$(t).closest(".event").css("opacity", "0.2");
+
+				$.SmartMessageBox({
+
+					title : "Delete your booking?",
+					content : "Please confirm that you are would like to delete your booking...",
+					buttons : '[No][Yes]'
+
+				}, function(ButtonPressed) {
+
+					if (ButtonPressed === "Yes") {
+
+						var classes = $(t).closest(".event").attr("class").split(' ');
+						var id = 0;
+
+						// Process clicking on the cross
+						arr = jQuery.grep(classes, function( n, i ) {
+							var class_name = n.indexOf('event-id-');
+							if ( class_name >=0 ) {
+								id = n.replace('event-id-', '');
+								delete_event( id );
+							}
+						});
+
+					} else {
+						$(t).parent().css("opacity", "1");
+					}
+
+				});
+
+				e.preventDefault();
 
 			});
 
