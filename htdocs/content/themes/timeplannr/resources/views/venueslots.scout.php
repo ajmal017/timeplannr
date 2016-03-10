@@ -151,6 +151,8 @@
 						if ($count > 25) $count = 0;
 						$date = strtotime( $slot['date'] );
 						$day = date( "d", $date );
+						$month = date( "m", $date );
+						$year = date( "Y", $date );
 
 						// Calculate time values for From
 						$time_from = $slot['time_from'];
@@ -187,8 +189,8 @@
 					{
 						id: <?php echo $slot['ID']; ?>,
 						title: '<?php echo addslashes(get_avatar(  $slot['timeslot_user'], 20 )); ?> {{ $slot['first_name'] }} {{ $slot['last_name']  }}{{$comment_icon}}',
-						start: new Date(y, m, '{{ $day }}' , '{{ $time_from_hour }}', '{{ $time_from_minute }}'),
-						end: new Date(y, m, '{{ $day }}', '{{ $time_to_hour }}', '{{ $time_to_minute }}'),
+						start: new Date('{{ $year }}', '{{ $month - 1 }}', '{{ $day }}' , '{{ $time_from_hour }}', '{{ $time_from_minute }}'),
+						end: new Date('{{ $year }}', '{{ $month - 1 }}', '{{ $day }}', '{{ $time_to_hour }}', '{{ $time_to_minute }}'),
 						allDay: false,
 						className: ["event", "bg-color-{{ $colour }}", 'event-id-<?php echo $slot['ID']; ?>'],
 						description: '{{ addslashes( $title ) }}',

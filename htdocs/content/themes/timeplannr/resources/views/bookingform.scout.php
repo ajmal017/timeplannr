@@ -215,9 +215,10 @@
 
 					};
 
-					// Dynamically add new event to the calendar view
-					myCalendar.fullCalendar( 'renderEvent', new_event );
+					// Dynamically add new event to the calendar view and make it stick
+					myCalendar.fullCalendar( 'renderEvent', new_event, true );
 
+					// Close the modal form
 					$('#myModal').modal('hide');
 
 				}
