@@ -383,7 +383,12 @@ function get_events_callback() {
 			$delete_icon = "<a id='delete-event-link-" . $slot['ID'] .  "' style='margin-top: 3px; float: right; margin-right: 4px; z-index: 10;' class='closeon delete-event-link'><i style=\"font-size: 12px; color: white;\" class=\"fa fa-times-circle\"></i></a>";
 		}
 
-		$slot_array['title'] = get_avatar( $slot['timeslot_user'], 20 ) . $slot['first_name'] . ' ' . $slot['last_name'] . $delete_icon;
+		$comment_icon = '';
+		if ( isset( $slot['title'] ) && !empty( $slot['title'] ) ) {
+			$comment_icon = ' <i class="fa fa-comment"></i>';
+		}
+
+		$slot_array['title'] = get_avatar( $slot['timeslot_user'], 20 ) . ' '.$slot['first_name'] . ' ' . $slot['last_name'] . $comment_icon . $delete_icon;
 		$slot_array['start'] = date( "Y-m-d", $date) . 'T' . $time_from_hour . ':' . $time_from_minute . ':00';
 		$slot_array['end'] = date( "Y-m-d", $date) . 'T' . $time_to_hour . ':' . $time_to_minute . ':00';
 		$slot_array['allDay'] = false;
