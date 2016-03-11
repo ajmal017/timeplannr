@@ -273,6 +273,30 @@
 					currentDate = days[ currentDate.weekday() ] + " - " + currentDate.format('MMMM Do, YYYY') ;
 					$('.fc-toolbar .fc-left h2').text(currentDate);
 
+				},
+
+				// Limit the Previous and Next buttons to be active for dates between 2 days in the past and
+				// 2 months in the future
+				viewRender: function(currentView){
+					var minDate = moment().add( -2,'days'),
+						maxDate = moment().add( 2,'months');
+					// Past
+					if (minDate >= currentView.start && minDate <= currentView.end) {
+						$(".fc-prev-button").prop('disabled', true);
+						$(".fc-prev-button").addClass('fc-state-disabled');
+					}
+					else {
+						$(".fc-prev-button").removeClass('fc-state-disabled');
+						$(".fc-prev-button").prop('disabled', false);
+					}
+					// Future
+					if (maxDate >= currentView.start && maxDate <= currentView.end) {
+						$(".fc-next-button").prop('disabled', true);
+						$(".fc-next-button").addClass('fc-state-disabled');
+					} else {
+						$(".fc-next-button").removeClass('fc-state-disabled');
+						$(".fc-next-button").prop('disabled', false);
+					}
 				}
 
 			});
