@@ -107,7 +107,12 @@ class TimeslotModel {
      */
     public static function perVenue($venueIds)
     {
-	    $query = Post::type('timeslot')->select( array('post_title', 'post_status'))->where('post_status', '=', 'publish' );
+		$date_2_days_ago = date('Y-m-d', strtotime('-2 days', time()));
+
+	    $query = Post::type('timeslot')
+			->select( array('post_title', 'post_status'))
+			->where( 'post_status', '=', 'publish' )
+			->whereRaw( 'DATE(`t2`.`meta_value`) >= ?', [ $date_2_days_ago ] );
 
         $relationships = array(
 		    'postmeta' => array(
