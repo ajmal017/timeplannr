@@ -135,7 +135,7 @@
 
 					<?php foreach( $venues as $venue) : ?>
 
-						{ id: 'venue-{{ $venue['ID'] }}', name: '{{ $venue['post_title'] }}' },
+						{ id: 'venue-{{ $venue['ID'] }}', name: '{{ addslashes( $venue['post_title'] ) }}' },
 
 					<?php endforeach; ?>
 
