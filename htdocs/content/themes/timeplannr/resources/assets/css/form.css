@@ -27,3 +27,13 @@ body.login {
 #logo {
     margin-top: 0;
 }
+
+
+textarea.form-control {
+    padding-top: 7px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    overflow: auto;
+}

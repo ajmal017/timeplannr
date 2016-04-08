@@ -72,8 +72,6 @@ class VenueController extends BaseController
 		// Get venue details
 		// $venueDetails = VenueModel::details($_GET['id']);
 
-		// dump($venueDetails);
-
 		// Booked slots for the venue
 		$bookedSlots = TimeslotModel::perVenue( array_keys($venuesArray) );
 
@@ -129,7 +127,31 @@ class VenueController extends BaseController
 		return View::make('pages.venue.details');
 	}
 
+	public function suggest() {
+
+		$submitted = FALSE;
+
+		if (isset($_POST[Session::nonceName]) && 1 === wp_verify_nonce($_POST[Session::nonceName], Session::nonceAction)) {
+
+			global $current_user;
+			get_currentuserinfo();
+
+			$data = Input::all();
+
+			$this->model = new VenueModel();
+			$result = $this->model->add_new( $data, $current_user->ID );
+
+			$submitted = TRUE;
+
+		}
+
+		// Render the view
+		return View::make('pages.venue.suggest', array(
+			'submitted' => $submitted
+		));
+
+	}
+
 }
 
 ?>
-
