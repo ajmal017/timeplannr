@@ -26,29 +26,17 @@ class Custom_Post_Types {
 
 		// Define fields for the metabox
 		$fields = array(
-			Field::checkbox('active', 'Yes'),
-			Field::checkbox('confirmed', 'Yes'),
-			Field::text('name'),
-			Field::text('street', array('title' =>'Address')),
+			Field::checkbox('active', array('1' => 'Yes')),
+			Field::checkbox('confirmed', array('1' => 'Yes')),
+			Field::text('address', array('title' =>'Address')),
 			Field::text('city', array('title' =>'City')),
 			Field::text('state', array('title' =>'State')),
-			Field::text('postcode', array('title' =>'ZIP code')),
+			Field::text('postcode', array('title' =>'Postcode')),
 			Field::text('country', array('title' =>'Country')),
-			Field::select('kind', [
-				[
-					'RSL club',
-					'Sports club',
-					'Library'
-				]
-			], array('title' => 'Choose a country:')),
-			Field::infinite('chapters', array(
-				Field::text('title'),
-				Field::textarea('content')
-			))
 		);
 
 		// Add metabox with custom fields
-		Metabox::make('Venue details', 'venues')->set($fields);
+		Metabox::make('Venue details', 'venue')->set($fields);
 
 		// Add venue types custom taxonomy
 		Taxonomy::make('venue_type', 'venue', 'Venue Types', 'Venue Type')->set();
