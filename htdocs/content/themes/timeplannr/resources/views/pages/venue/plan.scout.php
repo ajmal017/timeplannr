@@ -79,11 +79,26 @@
 
 				});
 
+				document.cookie="timeplannr_filter=" + jQuery(this).val() + "; expires=Thu, 18 Dec 2017 12:00:00 UTC; path=/";
+
 				return false;
 
 			})
 
+			jQuery("#calendar-filter").val( getCookie( 'timeplannr_filter' )).trigger("change");
+
 		});
+
+		function getCookie(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+			}
+			return "";
+		}
 
 	</script>
 
