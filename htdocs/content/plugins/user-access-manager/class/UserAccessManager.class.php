@@ -28,7 +28,7 @@ class UserAccessManager
 {
     protected $_blAtAdminPanel = false;
     protected $_sAdminOptionsName = "uamAdminOptions";
-    protected $_sUamVersion = "1.2.6.6";
+    protected $_sUamVersion = "1.2.6.7";
     protected $_sUamDbVersion = "1.3";
     protected $_aAdminOptions = null;
     protected $_oAccessHandler = null;
@@ -2149,9 +2149,7 @@ class UserAccessManager
              * mime_content_type has been deprecated as the PECL extension file info
              * provides the same functionality (and more) in a much cleaner way.
              */
-            $filename_exploded = explode('.', $sFileName);
-            $sFileExt = array_pop( $filename_exploded );
-            //$sFileExt = strtolower(array_pop(explode('.', $sFileName)));
+            $sFileExt = strtolower(array_pop(explode('.', $sFileName)));
             $aMimeTypes = $this->_getMimeTypes();
 
             if (function_exists('finfo_open')) {
@@ -2316,12 +2314,15 @@ class UserAccessManager
          */
         global $wpdb;
 
-        $oDbPost = $wpdb->get_row(
+        $sSql = $wpdb->prepare(
             "SELECT ID
             FROM ".$wpdb->prefix."posts
-            WHERE guid = '" . $sNewUrl . "'
-            LIMIT 1"
+            WHERE guid = %s
+            LIMIT 1",
+            $sNewUrl
         );
+
+        $oDbPost = $wpdb->get_row($sSql);
         
         if ($oDbPost) {
             $this->_aPostUrls[$sUrl] = $oDbPost->ID;
