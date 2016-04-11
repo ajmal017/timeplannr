@@ -141,6 +141,15 @@ class VenueController extends BaseController
 			$this->model = new VenueModel();
 			$result = $this->model->add_new( $data, $current_user->ID );
 
+			$email_notification_body  = 'Title: ' . $data['title_a'] . "\n";
+			$email_notification_body .= 'Address: ' . $data['address'] . "\n";
+			$email_notification_body .= 'City: ' . $data['city'] . "\n";
+			$email_notification_body .= 'State: ' . $data['state'] . "\n";
+			$email_notification_body .= 'Postcode: ' . $data['postcode'] . "\n";
+			$email_notification_body .= 'Country: ' . $data['country'] . "\n";
+
+			wp_mail( get_option('admin_email'), __( 'Timeplannr - New venue suggestion ("' . $data['title_a'] . '")', 'timeplannr' ), $email_notification_body );
+
 			$submitted = TRUE;
 
 		}
