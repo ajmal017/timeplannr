@@ -177,4 +177,28 @@ class TimeslotModel {
 		return $post;
 	}
 
+	public function getForCurrentDate( $date, $venue_id ) {
+
+		$query = Post::type('timeslot')
+			->select( array('post_title', 'post_status'))
+			->where( 'post_status', '=', 'publish' )
+			->whereRaw( '`t1`.`meta_value` = ?', [ $venue_id ] )
+			->whereRaw( 'DATE(`t2`.`meta_value`) = ?', [ $date ] );
+
+		$relationships = array(
+			'postmeta' => array(
+				'post_id' => array(
+					'timeslot_venue',
+					'date',
+					'timeslot_user',
+				),
+			),
+		);
+
+		$query = self::queryLevel($query, $relationships);
+
+		return $query->get()->toArray();
+
+	}
+
 }

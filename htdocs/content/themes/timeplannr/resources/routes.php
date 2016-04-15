@@ -17,6 +17,7 @@ Route::get( 'page', array( 'anton', 'uses' => 'VenueController@anton') );
 Route::get( 'page', array( 'venue/find', 'uses' => 'VenueController@find') );
 Route::any( 'page', array( 'suggest', 'uses' => 'VenueController@suggest') );
 Route::any( 'page', array( 'book', 'uses' => 'VenueController@plan') );
+Route::any( 'page', array( 'telegram', 'uses' => 'VenueController@telegram') );
 Route::any( 'page', array(
 
 	array(

@@ -221,6 +221,19 @@
 					// Close the modal form
 					$('#myModal').modal('hide');
 
+					// Build a text string for getting the bookings
+					text_date = y + '-' + (parseInt(m) + 1) + '-' + d;
+
+					// Send notifications via Telegram
+					jQuery.post(
+						'/cms/wp-admin/admin-ajax.php',
+						{
+							'action': 'send_telegram_notifications',
+							'venue_id':   myjson.id,
+							'date':  text_date
+						}
+					);
+
 				}
 			});
 

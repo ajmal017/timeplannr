@@ -536,3 +536,92 @@ function timeslot_rest_support() {
 	}
 
 }
+
+add_action( 'wp_ajax_send_telegram_notifications', 'az_send_telegram_notifications' );
+add_action( 'wp_ajax_nopriv_end_telegram_notifications', 'az_send_telegram_notifications' );
+
+function az_send_telegram_notifications() {
+
+	global $current_user;
+
+	if ( current_user_can( 'edit_posts' ) ) {
+
+		$timeslot_model = new TimeslotModel();
+
+		// Get all current bookings
+		$current_bookings = $timeslot_model->getForCurrentDate($_POST['date'], $_POST['venue_id']);
+		send_telegram_notications($current_user, $current_bookings);
+
+		echo json_encode(1);
+		wp_die();
+
+	}
+
+	echo json_encode(0);
+	wp_die();
+}
+
+/**
+ * Send a Telegram notification if the API Token has been set up
+ *
+ * @param WP_User $booking_user
+ * @param string $message
+ * @param string $intro
+ * @access protected
+ * @author Anton Zaroutski <anton@zaroutski.com>
+ */
+function send_notification_to_telegram( $booking_user, $intro, $message ) {
+
+	global $tdata;
+	global $current_user;
+
+	$telegram_api_token = $booking_user->telegram_api_token;
+
+	if ($telegram_api_token ) {
+
+		$nt = new Notifcaster_Class();
+		$_apitoken = $telegram_api_token;
+		$_msg = "\n" . $intro . "\n\n" . $message;
+
+		if( $tdata['twp_hashtag']->option_value != '' ) {
+			$_msg = $tdata['twp_hashtag']->option_value . "\n" . $_msg;
+		}
+
+		$nt->Notifcaster( $_apitoken );
+
+		if( mb_strlen( $_msg ) > 4096 ) {
+			$splitted_text = $this->str_split_unicode( $_msg, 4096 );
+			foreach ( $splitted_text as $text_part ) {
+				$nt->notify( $text_part );
+			}
+		} else {
+			$nt->notify( $_msg );
+		}
+
+	}
+
+}
+
+/**
+ * Send all telegram notifications
+ * for select day and venue
+ *
+ * @param WP_User $user
+ * @param array $bookings
+ */
+function send_telegram_notications( $user, $bookings ) {
+
+	$intro = 'New booking added';
+
+	foreach ( $bookings as $booking ) {
+
+		$booking_user = get_user_by( 'ID', $booking['timeslot_user'] );
+		$venue = get_post( $booking['timeslot_venue'] );
+		$name = $user->first_name . ' ' . $user->last_name;
+		$message = __( $name . ' has indicated that they are coming to the same venue (' . $venue->post_title . ') as you on ' . $booking['date'], 'timeplannr' );
+
+		send_notification_to_telegram( $booking_user, $intro, $message );
+
+	}
+
+}

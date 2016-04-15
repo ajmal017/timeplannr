@@ -52,6 +52,13 @@ class VenueController extends BaseController
 			$data = Input::all();
 
 			$this->model = new TimeslotModel();
+
+			// Get all current bookings
+			// $current_bookings = $this->model->getForCurrentDate( $data['date'], $data['id'] );
+
+			// $this->_send_telegram_notications( $current_user, $current_bookings );
+
+			// Add new booking to the database
 			$result = $this->model->insert($data, $current_user->ID);
 
 			echo json_encode( $result );
@@ -148,7 +155,12 @@ class VenueController extends BaseController
 			$email_notification_body .= 'Postcode: ' . $data['postcode'] . "\n";
 			$email_notification_body .= 'Country: ' . $data['country'] . "\n";
 
-			wp_mail( get_option('admin_email'), __( 'Timeplannr - New venue suggestion ("' . $data['title_a'] . '")', 'timeplannr' ), $email_notification_body );
+			$intro_text = __( 'New venue has been suggested:', 'timeplannr' );
+
+			// Send message to Telegram
+			$this->_send_suggestion_notification_to_telegram( $intro_text, $email_notification_body );
+
+			// wp_mail( get_option('admin_email'), __( 'Timeplannr - New venue suggestion ("' . $data['title_a'] . '")', 'timeplannr' ), $email_notification_body );
 
 			$submitted = TRUE;
 
@@ -159,6 +171,49 @@ class VenueController extends BaseController
 			'submitted' => $submitted
 		));
 
+	}
+
+	/**
+	 * Send a Telegram notification if the API Token has been set up
+	 *
+	 * @param string $message
+	 * @param string $intro
+	 * @access protected
+	 * @author Anton Zaroutski <anton@zaroutski.com>
+	 */
+	protected function _send_suggestion_notification_to_telegram( $intro, $message ) {
+
+		global $tdata;
+		global $current_user;
+
+		$telegram_api_token = $current_user->telegram_api_token;
+
+		$nt = new Notifcaster_Class();
+		$_apitoken = $telegram_api_token;
+		$_msg = "\n" . $intro . "\n\n" . $message;
+
+		if( $tdata['twp_hashtag']->option_value != '' ) {
+			$_msg = $tdata['twp_hashtag']->option_value . "\n" . $_msg;
+		}
+
+		$nt->Notifcaster( $_apitoken );
+
+		if( mb_strlen( $_msg ) > 4096 ) {
+			$splitted_text = $this->str_split_unicode( $_msg, 4096 );
+			foreach ( $splitted_text as $text_part ) {
+				$nt->notify( $text_part );
+			}
+		} else {
+			$nt->notify( $_msg );
+		}
+
+	}
+
+	
+
+	public function telegram()
+	{
+		return View::make('pages.telegram');
 	}
 
 }
