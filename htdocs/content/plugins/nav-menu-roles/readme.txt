@@ -5,7 +5,7 @@ Donate link: https://www.paypal.me/helgatheviking
 Tags: menu, menus, nav menu, nav menus
 Requires at least: 4.4.0
 Tested up to: 4.4.0
-Stable tag: 1.7.7
+Stable tag: 1.7.9
 License: GPLv3
 
 Hide custom menu items based on user roles. PLEASE READ THE FAQ IF YOU ARE NOT SEEING THE SETTINGS.
@@ -81,32 +81,26 @@ do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
 
 = <a id="patch"></a>Patching Your Plugin/Theme =
 
-Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. **Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
+Should you wish to attempt this patch yourself, you can modify your conflicting plugin/theme's admin menu Walker class. 
 
-1. Find the class that extends the `Walker_Nav_Menu`. As a hint, it is filtering `wp_edit_nav_menu_walker` and you might even be getting a warning about it from Nav Menu Roles. Example: 
+**Reminder: I do not provide support for fixing your plugin/theme. If you aren't comfortable with the following instructions, contact the developer of the conflicting plugin/theme!**
 
-`
-add_filter( 'wp_edit_nav_menu_walker', 'sample_edit_nav_menu_walker');
-function sample_edit_nav_menu_walker( $walker ) {
-    return 'Walker_Nav_Menu_Edit_Roles'; // this is the class name
-}
-`
+  1\. Find the class that extends the `Walker_Nav_Menu`. The fastest way to do this is to search your whole plugin/theme folder for `extends Walker_Nav_Menu`. When you find the file that contains this text you willl know which file you need to edit. Once you find it here's what the beginning of that class will look like:
 
-2. Find the file for the extending class. In my plugin this is in a file located at `inc/class.Walker_Nav_Menu_Edit_Roles.php`. I can't know *where* this file is in your plugin/theme. Please don't ask me, but here's what the beginning of that class will look like:
+`class YOUR_THEME_CUSTOM_WALKER extends Walker_Nav_Menu {}`
 
-`class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {}`
-
-Note that the class name is the same as the class name you found in step 1.
-
-3. Find the `start_el()` method
+  2\. Find the `start_el()` method
 
 In that file you will eventually see a class method that looks like:
 
-`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {`
+`function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+  // some stuff truncated for brevity
+}
+`
 
-4. Paste my action hook somewhere in this method!
+  3\. Paste my action hook somewhere in this method!
 
-In Nav Menu Roles, I have placed the hook directly after the description, ex:
+In Nav Menu Roles, I have placed the hook directly after the description, like so:
 
 `
 <p class="field-description description description-wide">
@@ -134,7 +128,7 @@ There are apparently a few membership plugins out there that *don't* use traditi
 
 Here's an example where I've added a new pseudo role, creatively called "new-role".  The first function adds it to the menu item admin screen. The second function is pretty generic and won't actually do anything because you need to supply your own logic based on the plugin you are using.  Nav Menu Roles will save the new "role" info and add it to the item in an array to the `$item->roles` variable.
 
-= <a id="new-role"></a>Adding a new "role"  =
+= <a id="new-role"></a>Adding a new "role" =
 
 `
 /*
@@ -203,6 +197,15 @@ However, the Import plugin only imports certain post meta for menu items.  As of
 1. No duplicate posts will be created but all menu post meta (including your Nav Menu Roles info) will be imported
 
 == Changelog ==
+
+= 1.7.9 = 
+* revert priority of walker back to default because themes are not actually using the hook to add their own fields. sadface. 
+
+= 1.7.8 = 
+* remove all admin notices
+
+= 1.7.7 =
+* add fancy debug messages
 
 = 1.7.6 =
 * tweak CSS to initially hide checkboxes on newly added menu items (defaults to "Everyone" so roles should not appear)

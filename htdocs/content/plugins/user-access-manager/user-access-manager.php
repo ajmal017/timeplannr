@@ -121,7 +121,7 @@ if (!function_exists("userAccessManagerAP")) {
             );
         }
 
-        get_currentuserinfo();
+        wp_get_current_user();
         $oCurUserData = get_userdata($oCurrentUser->ID);
         $oUamAccessHandler = $oUserAccessManager->getAccessHandler();
         $aTaxonomies = get_taxonomies(array('public' => true, '_builtin' => false));

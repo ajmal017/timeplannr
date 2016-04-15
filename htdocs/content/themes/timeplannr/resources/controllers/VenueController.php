@@ -47,7 +47,7 @@ class VenueController extends BaseController
 		if (isset($_POST[Session::nonceName]) && 1 === wp_verify_nonce($_POST[Session::nonceName], Session::nonceAction)) {
 
 			global $current_user;
-			get_currentuserinfo();
+			wp_get_current_user();
 
 			$data = Input::all();
 
@@ -141,7 +141,7 @@ class VenueController extends BaseController
 		if (isset($_POST[Session::nonceName]) && 1 === wp_verify_nonce($_POST[Session::nonceName], Session::nonceAction)) {
 
 			global $current_user;
-			get_currentuserinfo();
+			wp_get_current_user();
 
 			$data = Input::all();
 
@@ -209,7 +209,7 @@ class VenueController extends BaseController
 
 	}
 
-	
+
 
 	public function telegram()
 	{
